@@ -6,6 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "walk": "*",
+    "crypto": "*",
+    "meteor-ejson": "*",
+    "mongo-sync": "*",
+    "mongodb": "*"
+  },
   "author": "Adithep SriNarula",
   "license": "ISC"
 }
