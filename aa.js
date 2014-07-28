@@ -8,3 +8,6 @@ config = {_id: 'msrs', members: [{_id: 0, host: 'localhost:27017'}, {_id: 1, hos
 rs.initiate(config);
 rs.status();
 'use admin;';
+db.createUser({'user': 'oplogger', pwd: 'PASSWORD', "roles" : [{"role" : "read", "db" : "local"}]});
+db.runCommand({ createRole: "oplogger", privileges: [   { resource: { db: 'local', collection: 'system.replset'}, actions: ['find']}, ], roles: [{role: 'read', db: 'local'}] });
+db.runCommand({ grantRolesToUser: 'oplogger', roles: ['oplogger']});

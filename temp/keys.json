@@ -1,0 +1,1464 @@
+[
+  {
+    "key_n": "_alt_spelling_st",
+    "key_ty": "_st",
+    "key_dis": "Alternate Spelling",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360162
+    },
+    "_id": "fTJmuEX7R6psDtNCR"
+  },
+  {
+    "key_n": "border_country_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "countries",
+    "key_key": "country_n",
+    "key_dis": "Border",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360162
+    },
+    "_id": "wnCFX83ZyouxCXy57"
+  },
+  {
+    "key_n": "calling_c",
+    "key_ty": "_st",
+    "key_dis": "Calling Code",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360163
+    },
+    "_id": "J9XSHrQDdxyHdY6bg"
+  },
+  {
+    "key_n": "capital_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "cities",
+    "key_key": "city_n",
+    "key_dis": "Capital City",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360163
+    },
+    "_id": "oivHKkBYyEG2v6WKi"
+  },
+  {
+    "key_n": "cca2",
+    "key_ty": "_st",
+    "key_dis": "Cca2",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360164
+    },
+    "_id": "KxbzSkHNLDHCAhc9i"
+  },
+  {
+    "key_n": "cca3",
+    "key_ty": "_st",
+    "key_dis": "Cca3",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360164
+    },
+    "_id": "226byb6kgxzLB4FB4"
+  },
+  {
+    "key_n": "ccn3",
+    "key_ty": "_st",
+    "key_dis": "Ccn3",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360164
+    },
+    "_id": "bP2jJfgvZ3QERB7nb"
+  },
+  {
+    "key_n": "city_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "cities",
+    "key_key": "city_n",
+    "key_dis": "City",
+    "key_big": true,
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360165
+    },
+    "_id": "J8nxirQ5LSH5KDCTu"
+  },
+  {
+    "key_n": "class_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "classes",
+    "key_key": "class_n",
+    "key_dis": "Class Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360165
+    },
+    "_id": "7R3h5LgoWNtr8kEGb"
+  },
+  {
+    "key_n": "company_id",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "companies",
+    "key_key": "_id",
+    "key_dis": "Company Id",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360165
+    },
+    "_id": "ZRryWPbwGFMeJ76PE"
+  },
+  {
+    "key_n": "company_n",
+    "key_ty": "_st",
+    "key_dis": "Company Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "YqZ6AZBtL2QHqy3Ez"
+  },
+  {
+    "key_n": "continent_c",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "continents",
+    "key_key": "continent_c",
+    "key_dis": "Continent Code",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "aQGDHafmfaR2pCbBN"
+  },
+  {
+    "key_n": "continent_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "continents",
+    "key_key": "continent_n",
+    "key_dis": "Continent",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "vk33ujCJLXEoA5mp5"
+  },
+  {
+    "key_n": "cost",
+    "key_ty": "currency",
+    "key_dis": "Cost",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "vz8PiuktnmpBbCTjz"
+  },
+  {
+    "key_n": "country_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "countries",
+    "key_key": "country_n",
+    "key_dis": "Country",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "xBcMGe25d2hSXwWuY"
+  },
+  {
+    "key_n": "_ctl_s_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_tri",
+    "key_key": "_ctl_s_n",
+    "key_dis": "Control",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "Rn2g3FPPQxjmqmWJm"
+  },
+  {
+    "key_n": "currency_c",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "currencies",
+    "key_key": "currency_c",
+    "key_dis": "Currency Code",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "7y3a32vfnXCohDoxJ"
+  },
+  {
+    "key_n": "currency_n",
+    "key_ty": "_st",
+    "key_dis": "Currency",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "nC4AJBgtFdvN8Bx2Q"
+  },
+  {
+    "key_n": "currency_n_pl",
+    "key_ty": "_st",
+    "key_dis": "Currency Name Plural",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "2pQxykCQGKMAh9oSH"
+  },
+  {
+    "key_n": "demonym",
+    "key_ty": "_st",
+    "key_dis": "Demonym",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360167
+    },
+    "_id": "NDwvEyfo9sKjAnMex"
+  },
+  {
+    "key_n": "_dt",
+    "key_ty": "now",
+    "key_dis": "Date Modified",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360167
+    },
+    "_id": "uuPCQR8K58gYbw6zD"
+  },
+  {
+    "key_n": "_dt_of_birth",
+    "key_ty": "_dt",
+    "key_dis": "Date of Birth",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360167
+    },
+    "_id": "dA5aoYkgPfdwCFtXR"
+  },
+  {
+    "key_n": "_dt_of_entry",
+    "key_ty": "_dt",
+    "key_dis": "Date of Entry",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360167
+    },
+    "_id": "PtZSNnJi4euakpFvS"
+  },
+  {
+    "key_n": "_dt_registered",
+    "key_ty": "_dt",
+    "key_dis": "Date Registered",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360167
+    },
+    "_id": "sBjzApxdjx4DxWCjA"
+  },
+  {
+    "key_n": "_eid",
+    "key_ty": "oid",
+    "key_dis": "ID",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360167
+    },
+    "_id": "YiJejWbsXpvpBnckk"
+  },
+  {
+    "key_n": "entity_ad.main.city_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "cities",
+    "key_key": "city_n",
+    "key_dis": "Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360167
+    },
+    "_id": "kTGsJQAbdMbiRHKLH"
+  },
+  {
+    "key_n": "entity_ad.main.country_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "countries",
+    "key_key": "country_n",
+    "key_dis": "Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360168
+    },
+    "_id": "jiwcJ4Cdv39RcfHnc"
+  },
+  {
+    "key_n": "mobile.main",
+    "key_r": true,
+    "key_ty": "phone",
+    "key_s": "mobiles",
+    "key_key": "_id",
+    "key_dis": "Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360168
+    },
+    "_id": "B6Dbd6GSj2r7czE3Y"
+  },
+  {
+    "key_n": "mobile.work",
+    "key_r": true,
+    "key_ty": "phone",
+    "key_s": "mobiles",
+    "key_key": "_id",
+    "key_dis": "Work Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360168
+    },
+    "_id": "CScQr5vakFCnZxhrN"
+  },
+  {
+    "key_n": "mobile.personal",
+    "key_r": true,
+    "key_ty": "phone",
+    "key_s": "mobiles",
+    "key_key": "_id",
+    "key_dis": "Personal Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "zNXRmEp7NRrc57Jvt"
+  },
+  {
+    "key_n": "human_n.first",
+    "key_ty": "_st",
+    "key_dis": "First Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "SKHbQgjAaumqsb6Ad"
+  },
+  {
+    "key_n": "form_collection",
+    "key_ty": "_st",
+    "key_dis": "Trigger Collection",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "MyxEZd4tcbCuA48es"
+  },
+  {
+    "key_n": "href",
+    "key_ty": "_st",
+    "key_dis": "Href!",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "KvMchXBFyNZR5hmBd"
+  },
+  {
+    "key_n": "human_id",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "humans",
+    "key_key": "_id",
+    "key_dis": "Human Id",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "96JXxoXZj8keEF9ee"
+  },
+  {
+    "key_n": "_id",
+    "key_ty": "_st",
+    "key_dis": "ID",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "No7hZs9Bdg4FMDcss"
+  },
+  {
+    "key_n": "img_link",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "img",
+    "key_key": "img_link",
+    "key_dis": "Image Link",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "7h4XhcvRCHfgBepZo"
+  },
+  {
+    "key_n": "img_uuid",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "img",
+    "key_key": "img_uuid",
+    "key_dis": "Image UUID",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "dnhdaE6Kuu3bZDeg9"
+  },
+  {
+    "key_n": "input_form_input_starting",
+    "key_ty": "_arr",
+    "key_dis": "Input Form Starting Input",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "jwbiHoEgRrd87Dmym"
+  },
+  {
+    "key_n": "input_form_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "input_forms",
+    "key_key": "input_form_n",
+    "key_dis": "Input Form Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "nLgYPqELupxDRthgW"
+  },
+  {
+    "key_n": "json",
+    "key_ty": "_st",
+    "key_dis": "Json path",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "p6nySbnGYzbBA57ff"
+  },
+  {
+    "key_n": "key_1_key",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Key 1",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "iFGjyg2bybsM9D6Kc"
+  },
+  {
+    "key_n": "key_1_s",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_s",
+    "key_key": "_s_n_for",
+    "key_dis": "Key 1 Schema",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "FzFj3BgrBeKFE2eos"
+  },
+  {
+    "key_n": "key_2_key",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Key 2",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "juDEZRL8ZqttSrr7G"
+  },
+  {
+    "key_n": "key_2_s",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_s",
+    "key_key": "_s_n_for",
+    "key_dis": "Key 2 Schema",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "jLTSAtrr8JCZZj2nt"
+  },
+  {
+    "key_n": "key_alt_spellings",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Key of Alternate Spelling",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "tZeJ7GgBqTr8REzT2"
+  },
+  {
+    "key_n": "key_tr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Key Translation",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "4aqyniBCSE8Hg9gAv"
+  },
+  {
+    "key_n": "language_c",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "languages",
+    "key_key": "language_c",
+    "key_dis": "Language",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "8qB3kBTkyStnug95E"
+  },
+  {
+    "key_n": "language_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "languages",
+    "key_key": "language_n",
+    "key_dis": "Language",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "CAtkHhDsGLFywBPHq"
+  },
+  {
+    "key_n": "human_n.last",
+    "key_ty": "_st",
+    "key_dis": "Last Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "NTHPbXgwBh3cP5giw"
+  },
+  {
+    "key_n": "_loc",
+    "key_ty": "geo_json",
+    "key_dis": "Coordinates",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "R7bNju3RQdqrrsCfC"
+  },
+  {
+    "key_n": "location_id",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "locations",
+    "key_key": "_id",
+    "key_dis": "Location Id",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "T7Lq6g6ZzazCbpsnM"
+  },
+  {
+    "key_n": "location_n",
+    "key_ty": "_st",
+    "key_dis": "Location Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "BwyhkAqYY3rzwXybL"
+  },
+  {
+    "key_n": "location_ty_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "location_ty",
+    "key_key": "location_ty_n",
+    "key_dis": "Location Type",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "HQmRWL8scDwHNurrp"
+  },
+  {
+    "key_n": "human_n.middle",
+    "key_ty": "_st",
+    "key_dis": "Middle Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "hPA4JTJag2uwTypvQ"
+  },
+  {
+    "key_n": "email.main",
+    "key_r": true,
+    "key_ty": "email",
+    "key_s": "emails",
+    "key_key": "_id",
+    "key_dis": "Email",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "eC7heE69tZvfGyyJz"
+  },
+  {
+    "key_n": "email.work",
+    "key_r": true,
+    "key_ty": "email",
+    "key_s": "emails",
+    "key_key": "_id",
+    "key_dis": "Email",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "WzHos4AMwKBEyxXrY"
+  },
+  {
+    "key_n": "email.personal",
+    "key_r": true,
+    "key_ty": "email",
+    "key_s": "emails",
+    "key_key": "_id",
+    "key_dis": "Email",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "SpxuymTnyv9jvHXnd"
+  },
+  {
+    "key_n": "_nt_country_n",
+    "key_ty": "_st",
+    "key_dis": "Native Country Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "sBbWMpx7y4fRL5KPR"
+  },
+  {
+    "key_n": "_nt_language_n",
+    "key_ty": "_st",
+    "key_dis": "Native Language Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "zBNpEnwQPcs3fREQB"
+  },
+  {
+    "key_n": "_nt_symbol",
+    "key_ty": "_st",
+    "key_dis": "Native Symbol",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "3LmTJZyTW4dQvCzDY"
+  },
+  {
+    "key_n": "on_click",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_tri",
+    "key_key": "_tri_gr",
+    "key_dis": "Trigger Click",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "5Xbmy3NMS4M5CFFua"
+  },
+  {
+    "key_n": "on_select",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_tri",
+    "key_key": "_tri_gr",
+    "key_dis": "Trigger Select",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "xbjmGrRQayKmw8ayS"
+  },
+  {
+    "key_n": "on_submit",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_tri",
+    "key_key": "_tri_gr",
+    "key_dis": "Trigger Submit",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "W5pAQtyA4jXEJRDGy"
+  },
+  {
+    "key_n": "path_gr",
+    "key_r": true,
+    "key_ty": "gr_st",
+    "key_s": "_tri",
+    "key_key": "_tri_grs",
+    "key_dis": "Space for path",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "8BRe2zzD6vJcpByJ7"
+  },
+  {
+    "key_n": "path_n",
+    "key_ty": "_st",
+    "key_dis": "Path Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "t8zbZPfEg4n4QLPDX"
+  },
+  {
+    "key_n": "path_tem",
+    "key_ty": "_st",
+    "key_dis": "Path Template",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "7Da8Zh95cvLFkkM95"
+  },
+  {
+    "key_n": "population",
+    "key_ty": "_num",
+    "key_dis": "Population",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "otuLAZrkp58Ss6BcG"
+  },
+  {
+    "key_n": "relevance",
+    "key_ty": "_num",
+    "key_dis": "Relevance",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "cmAynQKJg9DawSxn2"
+  },
+  {
+    "key_n": "_s_alt_spellings",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_s",
+    "key_key": "_s_n_for",
+    "key_dis": "Schema of Alternate Spelling",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "3qLtAdj6Y5xgka7Lb"
+  },
+  {
+    "key_n": "_s_keys",
+    "key_ty": "array",
+    "key_dis": "Array of Keys",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "sFwB69fSN4YKbbnfB"
+  },
+  {
+    "key_n": "_s_n_for",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_s",
+    "key_key": "_s_n_for",
+    "key_dis": "Schema",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "E78HkFhXx8sJew65E"
+  },
+  {
+    "key_n": "_s_tr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_s",
+    "key_key": "_s_n_for",
+    "key_dis": "Schema Translation",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "Y8YeMx6mHn3x7BgFx"
+  },
+  {
+    "key_n": "service_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "service_n",
+    "key_key": "service_n",
+    "key_dis": "Service",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "KweQ4RDgWj7DCKsua"
+  },
+  {
+    "key_n": "service_s_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_s",
+    "key_key": "_s_n_for",
+    "key_dis": "Schema of Service",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "WxTHZQF6Nr2Lkxgjc"
+  },
+  {
+    "key_n": "sort",
+    "key_ty": "_num",
+    "key_dis": "Sort",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "QWDpDTMHTgMqRxMPu"
+  },
+  {
+    "key_n": "_spa",
+    "key_ty": "_st",
+    "key_dis": "Space Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "dsc9wXjoojGt3smpQ"
+  },
+  {
+    "key_n": "_spa_gr",
+    "key_r": true,
+    "key_ty": "gr_st",
+    "key_s": "_tri",
+    "key_key": "_tri_grs",
+    "key_dis": "Groups for path",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "veyNNbJ7z66XQCTLB"
+  },
+  {
+    "key_n": "_spa_tem",
+    "key_ty": "_st",
+    "key_dis": "Space Template",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360174
+    },
+    "_id": "sra9Rpb5mWmp2qsX8"
+  },
+  {
+    "key_n": "_st",
+    "key_ty": "_st",
+    "key_dis": "String",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "X9MYsFauhyatfb8ES"
+  },
+  {
+    "key_n": "sub_region",
+    "key_ty": "_st",
+    "key_dis": "Sub Region",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "PpKtnHX2nabotLBpN"
+  },
+  {
+    "key_n": "symbol",
+    "key_ty": "_st",
+    "key_dis": "Symbol",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "MsTecp7jJtswAdrkW"
+  },
+  {
+    "key_n": "tag_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "tags",
+    "key_key": "tag_n",
+    "key_dis": "Tag Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "5mwBYfkYsxwCJ3cTc"
+  },
+  {
+    "key_n": "human_n.title",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "titles",
+    "key_key": "title_n",
+    "key_dis": "Title",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "kevFJbZC4odoc6SDe"
+  },
+  {
+    "key_n": "_tr_st",
+    "key_ty": "_st",
+    "key_dis": "Translated String",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "AnNDZhooSi8TqjM8z"
+  },
+  {
+    "key_n": "_tri_dis",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Trigger Display",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "Dee2cSkSSJdRqvsXD"
+  },
+  {
+    "key_n": "_tri_gr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_tri",
+    "key_key": "_tri_gr",
+    "key_dis": "Trigger Group",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "JSAMcQ4qvTGxBEsJ7"
+  },
+  {
+    "key_n": "_tri_limit_key",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Trigger Limit Key",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "vPrth9DeooEeMziFk"
+  },
+  {
+    "key_n": "_tri_n",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_tri",
+    "key_key": "_tri_n",
+    "key_dis": "Trigger Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "rv8ziuRWuuFxkMtrk"
+  },
+  {
+    "key_n": "_tri_select_key",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Trigger Select Key",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "9bKDe3J3CNKvHmFHB"
+  },
+  {
+    "key_n": "_tri_select_key_from",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "keys",
+    "key_key": "key_n",
+    "key_dis": "Trigger Select Key From",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360175
+    },
+    "_id": "e6uQjTKAuRFsiNidf"
+  },
+  {
+    "key_n": "_tri_select_tri",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "_tri",
+    "key_key": "_tri_gr",
+    "key_dis": "Trigger Select Trigger",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360176
+    },
+    "_id": "Y4sJRc78LAqeuxhe3"
+  },
+  {
+    "key_n": "_tri_starting",
+    "key_ty": "_bl",
+    "key_dis": "Starting Trigger",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360176
+    },
+    "_id": "TcekWRxfFsBYCNbXY"
+  },
+  {
+    "key_n": "usd_exchange_rate",
+    "key_ty": "_num",
+    "key_dis": "USD Exchange Rate",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360176
+    },
+    "_id": "jucKco9FsCzCfC4vq"
+  },
+  {
+    "key_n": "_usr",
+    "key_ty": "user",
+    "key_dis": "User Name",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360176
+    },
+    "_id": "4At6AszWYJJYL6w9a"
+  },
+  {
+    "key_n": "_v",
+    "key_ty": "key_st",
+    "key_dis": "Key Value",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360176
+    },
+    "_id": "4WXqkFx9NCZjsJYNX"
+  },
+  {
+    "key_n": "_v_1",
+    "key_ty": "_st",
+    "key_dis": "Value 1",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360176
+    },
+    "_id": "3NZwX8WaR6Ap6cAAX"
+  },
+  {
+    "key_n": "_v_2",
+    "key_ty": "_st",
+    "key_dis": "Value 2",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360176
+    },
+    "_id": "tyDzPvjat7mrJ7sHT"
+  },
+  {
+    "key_n": "border_country_n_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "countries",
+    "key_key": "country_n",
+    "key_arr": true,
+    "key_dis": "Border",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360162
+    },
+    "_id": "ByYh8QFBsY5SSDX5L"
+  },
+  {
+    "key_n": "city_n_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "cities",
+    "key_key": "city_n",
+    "key_arr": true,
+    "key_dis": "City",
+    "key_big": true,
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360165
+    },
+    "_id": "bZ8sKnqqhNoJ9mN5v"
+  },
+  {
+    "key_n": "company_id_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "companies",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Company Id",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360165
+    },
+    "_id": "spos73ZNHNkDaTsPH"
+  },
+  {
+    "key_n": "country_n_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "countries",
+    "key_key": "country_n",
+    "key_arr": true,
+    "key_dis": "Country",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "Gf57AGQ86Z7Jaa4oP"
+  },
+  {
+    "key_n": "currency_c_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "currencies",
+    "key_key": "currency_c",
+    "key_arr": true,
+    "key_dis": "Currency Code",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360166
+    },
+    "_id": "vw4M55Xdxrk7rJZGn"
+  },
+  {
+    "key_n": "mobile.main_arr",
+    "key_r": true,
+    "key_ty": "phone",
+    "key_s": "mobiles",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360168
+    },
+    "_id": "4AwQaj52h7Z8ZfYAe"
+  },
+  {
+    "key_n": "mobile.work_arr",
+    "key_r": true,
+    "key_ty": "phone",
+    "key_s": "mobiles",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Work Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360168
+    },
+    "_id": "SoZksyBhaHkA472xP"
+  },
+  {
+    "key_n": "mobile.personal_arr",
+    "key_r": true,
+    "key_ty": "phone",
+    "key_s": "mobiles",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Personal Mobile",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360168
+    },
+    "_id": "SuHFgSwtM2YBWgFhw"
+  },
+  {
+    "key_n": "human_id_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "humans",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Human Id",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360170
+    },
+    "_id": "fPRMfPFh74e2QotCJ"
+  },
+  {
+    "key_n": "language_c_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "languages",
+    "key_key": "language_c",
+    "key_arr": true,
+    "key_dis": "Language",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "HDgduXPgNTuDBN9Rv"
+  },
+  {
+    "key_n": "language_n_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "languages",
+    "key_key": "language_n",
+    "key_arr": true,
+    "key_dis": "Language",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360171
+    },
+    "_id": "YLoJwrLuuJ6ttbgt5"
+  },
+  {
+    "key_n": "location_id_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "locations",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Location Id",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "jhbfSqruZCHpXhw34"
+  },
+  {
+    "key_n": "location_ty_n_arr",
+    "key_r": true,
+    "key_ty": "_st",
+    "key_s": "location_ty",
+    "key_key": "location_ty_n",
+    "key_arr": true,
+    "key_dis": "Location Type",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "irKtdPePjZovHY6Gd"
+  },
+  {
+    "key_n": "email.main_arr",
+    "key_r": true,
+    "key_ty": "email",
+    "key_s": "emails",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Email",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "JtNKD8gNuQynStyFb"
+  },
+  {
+    "key_n": "email.work_arr",
+    "key_r": true,
+    "key_ty": "email",
+    "key_s": "emails",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Email",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360172
+    },
+    "_id": "XhKdLsGuoxr7dPa29"
+  },
+  {
+    "key_n": "email.personal_arr",
+    "key_r": true,
+    "key_ty": "email",
+    "key_s": "emails",
+    "key_key": "_id",
+    "key_arr": true,
+    "key_dis": "Email",
+    "_s_n": "keys",
+    "_usr": "root",
+    "_dt": {
+      "$date": 1406538360173
+    },
+    "_id": "PSQHycbG2LJwyrRry"
+  }
+]
