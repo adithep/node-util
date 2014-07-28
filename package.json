@@ -9,9 +9,9 @@
   "dependencies": {
     "walk": "*",
     "crypto": "*",
-    "meteor-ejson": "*",
     "mongo-sync": "*",
-    "mongodb": "*"
+    "mongodb": "*",
+    "underscore": "*"
   },
   "author": "Adithep SriNarula",
   "license": "ISC"

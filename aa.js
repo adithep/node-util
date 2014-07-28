@@ -7,6 +7,7 @@ var rs3 = '--replSet msrs --port 27015 --dbpath ~/db/rs3/ --fork --logpath ~/log
 config = {_id: 'msrs', members: [{_id: 0, host: 'localhost:27017'}, {_id: 1, host: 'localhost:27016'}, {_id: 2, host: 'localhost:27015'}]};
 rs.initiate(config);
 rs.status();
+'db.isMaster()';
 'use admin;';
 db.createUser({'user': 'oplogger', pwd: 'PASSWORD', "roles" : [{"role" : "read", "db" : "local"}]});
 db.runCommand({ createRole: "oplogger", privileges: [   { resource: { db: 'local', collection: 'system.replset'}, actions: ['find']}, ], roles: [{role: 'read', db: 'local'}] });
