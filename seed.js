@@ -5,7 +5,9 @@
   var fs = require('fs'),
     path = require('path'),
     EJSON = require('./ejson'),
-    random = require('./random').random();
+    random = require('./random').random(),
+    _ = require('lodash'),
+    _tra = require('traverse');
   var Db = require('mongodb').Db,
     MongoClient = require('mongodb').MongoClient,
     ReplSetServers = require('mongodb').ReplSetServers,
@@ -38,8 +40,60 @@
       this.seed_schema(s_json, to_load);
 
     }
+    this.check_all();
     server.close();
 
+  };
+
+  Seed.prototype.fini = function (doc, arr, pa) {
+    var path;
+    for (var key in doc) {
+      if (pa) {
+        path = pa + "." + key;
+      } else {
+        path = key;
+      }
+      if (_.isPlainObject(doc[key])) {
+        arr = this.fini(doc[key], arr, path);
+      } else {
+        var jj = {value: doc[key], path: path};
+        arr.push(jj);
+      }
+    }
+    return arr;
+  };
+
+  Seed.prototype.fin = function (doc, s_n) {
+    var obj = {};
+    obj.s_n = s_n;
+    obj.arr = [];
+    obj.arr = this.fini(doc, obj.arr);
+    return obj.arr;
+
+  };
+
+  Seed.prototype.check_all = function () {
+    var self = this;
+    var log = [];
+    self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys"]}}).forEach(function (s_n) {
+      var keys = self.col.find({_s_n: "keys", key_n: {$in: s_n._s_keys}}).toArray();
+      self.col.find({_s_n: s_n._s_n_for}).forEach(function (doc) {
+        var arr = self.fin(doc, s_n._s_n_for);
+        for(var i = 0; i < arr.length; i++) {
+          if ((s_n._s_keys.indexOf(arr[i].path) !== -1)) {
+
+          } else {
+            var str = arr[i].path + ": " + arr[i].value + " of " + s_n._s_n_for + ". Key not in Schema";
+            console.log(Object.resolve(arr[i].path, doc));
+            log.push(str);
+
+          }
+        }
+      });
+    });
+    if (log && log.length > 0) {
+      self.write_file(log, 'temp/log.json');
+    }
   };
 
   Seed.prototype.create_obj = function (obj, s_n) {
@@ -55,7 +109,19 @@
   Seed.prototype.combine_def = function (defa, obj) {
     var def = EJSON.clone(defa);
     for (var def_key in def) {
-      obj[def_key] = def[def_key];
+      if (obj[def_key]) {
+        if (_.isPlainObject(obj[def_key])) {
+          this.combine_def(def[def_key], obj[def_key]);
+        } else if (_.isArray(obj[def_key])) {
+          obj[def_key] = _.union(obj[def_key], def[def_key]);
+        } else if (def_key === "class") {
+          obj[def_key] = obj[def_key] + " " + def[def_key];
+        }
+
+      } else {
+        obj[def_key] = def[def_key];
+      }
+
     }
   };
 
