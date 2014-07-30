@@ -83,9 +83,13 @@
           if ((s_n._s_keys.indexOf(arr[i].path) !== -1)) {
 
           } else {
-            var str = arr[i].path + ": " + arr[i].value + " of " + s_n._s_n_for + ". Key not in Schema";
-            console.log(Object.resolve(arr[i].path, doc));
-            log.push(str);
+            var log_obj = {
+              path: arr[i].path,
+              value: arr[i].value,
+              schema: s_n._s_n_for,
+              log_ty: "Key not in Schema"
+            };
+            log.push(log_obj);
 
           }
         }
@@ -99,7 +103,9 @@
   Seed.prototype.create_obj = function (obj, s_n) {
     obj._usr = "root";
     obj._dt = new Date();
-    obj._id = random.id();
+    if (!obj._id) {
+      obj._id = random.id();
+    }
     if (s_n) {
       obj._s_n = s_n;
     }
@@ -194,7 +200,9 @@
     var obj = EJSON.clone(key_obj);
     obj.key_n = obj.key_n + "_arr";
     obj._dt = new Date();
-    obj._id = random.id();
+    if (!obj._id) {
+      obj._id = random.id();
+    }
     return obj;
 
   };
@@ -211,7 +219,9 @@
           delete keys_json[i].key_arr;
         }
         keys_json[i]._dt = new Date();
-        keys_json[i]._id = random.id();
+        if (!keys_json[i]._id) {
+          keys_json[i]._id = random.id();
+        }
 
       }
       var json = keys_json.concat(arr);
