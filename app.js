@@ -3,7 +3,7 @@
   "use strict";
 
   var seed = require('./seed').seed();
-  seed.seed_all();
+  seed.seed_all("marathon");
 
 
 }());

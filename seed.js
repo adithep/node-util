@@ -21,27 +21,36 @@
   var Server = require("mongo-sync").Server,
     DB = require("mongo-sync").DB;
 
+  var db_obj = {
+    marathon: "marathon-str-json",
+    alpha_sys: "alphas-str-json"
+  };
+
 
 
   function Seed() {}
 
-  Seed.prototype.seed_all = function () {
-    var server = new Server('127.0.0.1:27017');
-    this.col = server.db("website").getCollection("data");
-    var s_json = EJSON.parse(fs.readFileSync('../packages/seed-json/essential-list-json/_s.json', 'utf-8'));
-    var keys_json = EJSON.parse(fs.readFileSync('../packages/seed-json/essential-list-json/keys.json', 'utf-8'));
-    var to_load = EJSON.parse(fs.readFileSync('../packages/seed-json/web-str-json/_s_to_load.json', 'utf-8'));
-    if (s_json && keys_json && to_load) {
-      var n_s_json = [];
-      this.col.remove({});
-      var keys_obj = this.seed_keys(keys_json);
-      this.col.insert(keys_obj);
-      //this.write_file(keys_obj, 'temp/keys.json');
-      this.seed_schema(s_json, to_load);
+  Seed.prototype.seed_all = function (database) {
+    if (db_obj[database]) {
+      var server = new Server('127.0.0.1:27017');
+      this.col = server.db(database).getCollection("data");
+      var s_json = EJSON.parse(fs.readFileSync('../json/essential-list-json/_s.json', 'utf-8'));
+      var keys_json = EJSON.parse(fs.readFileSync('../json/essential-list-json/keys.json', 'utf-8'));
+      var to_load = EJSON.parse(fs.readFileSync('../json/'+db_obj[database]+'/_s_to_load.json', 'utf-8'));
+      if (s_json && keys_json && to_load) {
+        var n_s_json = [];
+        this.col.remove({});
+        var keys_obj = this.seed_keys(keys_json);
+        this.col.insert(keys_obj);
+        //this.write_file(keys_obj, 'temp/keys.json');
+        this.seed_schema(s_json, to_load);
+        this.check_all();
 
+      }
+
+      server.close();
     }
-    this.check_all();
-    server.close();
+
 
   };
 
@@ -97,7 +106,7 @@
         if (key.key_arr) {
           if(Array.isArray(value)) {
             for(var i; i < value.length; i++) {
-              if (key.key_r) {
+              if (key.key_r && (this.col.find({_s_n: "_s", _s_n_for: key.key_s}).count()>=1)) {
 
 
               } else {
@@ -177,12 +186,12 @@
   };
 
   Seed.prototype.seed_s_json_tri = function (arr, filter, s_n) {
-    var tri_defaults = EJSON.parse(fs.readFileSync('../packages/seed-json/web-str-json/_tri_defaults.json', 'utf-8'));
+    var tri_defaults = EJSON.parse(fs.readFileSync('../json/marathon-str-json/_tri_defaults.json', 'utf-8'));
     for(var i = 0; i < arr.length; i++) {
       if (filter.indexOf(arr[i]._n) === -1) {
         arr.splice(i, 1);
       } else {
-        var json_path = '../packages/seed-json/' + arr[i].path;
+        var json_path = '../json/' + arr[i].path;
         var json = EJSON.parse(fs.readFileSync(json_path, 'utf-8'));
         for(var m = 0; m < json.length; m++) {
           if (tri_defaults[json[m]._tri_ty]) {
@@ -203,7 +212,7 @@
       if (filter.indexOf(arr[i]._n) === -1) {
         arr.splice(i, 1);
       } else {
-        var json_path = '../packages/seed-json/' + arr[i].path;
+        var json_path = '../json/' + arr[i].path;
         var json = EJSON.parse(fs.readFileSync(json_path, 'utf-8'));
         for(var m = 0; m < json.length; m++) {
           this.create_obj(json[m], s_n);
