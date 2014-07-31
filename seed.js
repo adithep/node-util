@@ -73,11 +73,11 @@
   };
 
   Seed.prototype.check_keys = function (s_key, schema, log) {
-    var keys = [];
+    var keys = {};
     for(var i = 0; i < s_key.length; i++) {
       var kar = this.col.findOne({_s_n: "keys", key_n: s_key[i]});
       if (kar) {
-        keys.push(kar);
+        keys[kar.key_n] = kar;
       } else {
         var log_obj = {
           key_n: s_key[i],
@@ -90,20 +90,45 @@
     return keys;
   };
 
+  Seed.prototype.value_check = function (key, value, schema, log) {
+    if (key, value, schema) {
+      switch(key.key_ty) {
+      case "_st":
+        if (key.key_arr) {
+          if(Array.isArray(value)) {
+            for(var i; i < value.length; i++) {
+              if (key.key_r) {
+
+
+              } else {
+                if ((typeof value === "string") && (String(value) !== "")) {
+                  return String(value);
+                }
+              }
+            }
+          }
+        }
+        break;
+      default:
+      }
+    }
+
+  };
+
   Seed.prototype.check_all = function () {
     var self = this;
     var log = [];
     self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys"]}}).forEach(function (s_n) {
       var keys = self.check_keys(s_n._s_keys, s_n._s_n_for, log);
       self.col.find({_s_n: s_n._s_n_for}).forEach(function (doc) {
-        var arr = self.fin(doc, s_n._s_n_for);
-        for(var i = 0; i < arr.length; i++) {
-          if ((s_n._s_keys.indexOf(arr[i].path) !== -1)) {
-
+        for(var doc_k in doc) {
+          if ((s_n._s_keys.indexOf(doc_k) !== -1)) {
+            var key_obj = keys[doc_k];
+            self.value_check(key_obj, doc[doc_k], s_n._s_n_for, log);
           } else {
             var log_obj = {
-              path: arr[i].path,
-              value: arr[i].value,
+              key: doc_k,
+              value: doc[doc_k],
               schema: s_n._s_n_for,
               log_ty: "Key not in Schema"
             };
@@ -115,6 +140,8 @@
     });
     if (log && log.length > 0) {
       self.write_file(log, 'temp/log.json');
+    } else {
+      self.write_file(["empty"], 'temp/log.json');
     }
   };
 
