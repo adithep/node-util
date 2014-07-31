@@ -72,11 +72,29 @@
 
   };
 
+  Seed.prototype.check_keys = function (s_key, schema, log) {
+    var keys = [];
+    for(var i = 0; i < s_key.length; i++) {
+      var kar = this.col.findOne({_s_n: "keys", key_n: s_key[i]});
+      if (kar) {
+        keys.push(kar);
+      } else {
+        var log_obj = {
+          key_n: s_key[i],
+          schema: schema,
+          log_ty: "Key not exist"
+        };
+        log.push(log_obj);
+      }
+    }
+    return keys;
+  };
+
   Seed.prototype.check_all = function () {
     var self = this;
     var log = [];
     self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys"]}}).forEach(function (s_n) {
-      var keys = self.col.find({_s_n: "keys", key_n: {$in: s_n._s_keys}}).toArray();
+      var keys = self.check_keys(s_n._s_keys, s_n._s_n_for, log);
       self.col.find({_s_n: s_n._s_n_for}).forEach(function (doc) {
         var arr = self.fin(doc, s_n._s_n_for);
         for(var i = 0; i < arr.length; i++) {

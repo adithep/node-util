@@ -1,37 +1,19 @@
 [
   {
-    "path": "_tri_ty",
-    "value": "_tri_write",
+    "path": "_tri_grs.art_director_info_gr.sort",
+    "value": 1,
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_write_gr._btn",
-    "value": "input_form_btn",
+    "path": "_tri_dis._s_n",
+    "value": "humans",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_write_gr.input",
-    "value": "input_form_input",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_insert_local_element",
-    "value": "input_form_input_starting",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_tri_write_key",
+    "path": "_tri_dis._id",
+    "value": "to_be_filled",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -42,90 +24,14 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_s_n",
-    "value": "approaches",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_keys",
-    "value": [
-      "approach_n",
-      "approach_description",
-      "img_uuid"
-    ],
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_dis._s_n",
     "value": "approaches",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_ty",
-    "value": "_s_doc",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_tri_select",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_tri_limit",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.path_btn_gr.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -138,24 +44,6 @@
   {
     "path": "_tri_grs.path_btn_gr.sort",
     "value": 1,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -172,24 +60,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "attrs._btn_attrs.class",
     "value": "_get",
     "schema": "_tri",
@@ -202,24 +72,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "attrs._btn_attrs.class",
     "value": "_get",
     "schema": "_tri",
@@ -232,24 +84,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "attrs._btn_attrs.class",
     "value": "_get",
     "schema": "_tri",
@@ -258,24 +92,6 @@
   {
     "path": "_tri_grs.img_location_gr_btn_gr.sort",
     "value": 1,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -292,24 +108,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "attrs._btn_attrs.class",
     "value": "_get",
     "schema": "_tri",
@@ -318,24 +116,6 @@
   {
     "path": "_tri_grs.img_location_gr_btn_gr.sort",
     "value": 3,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -352,24 +132,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "attrs._btn_attrs.class",
     "value": "_get",
     "schema": "_tri",
@@ -382,24 +144,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "attrs._btn_attrs.class",
     "value": "_get",
     "schema": "_tri",
@@ -412,24 +156,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "null",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_btn",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "attrs._btn_attrs.class",
     "value": "_get",
     "schema": "_tri",
@@ -438,24 +164,6 @@
   {
     "path": "_tri_grs.subscription_form.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "key",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "input",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -486,24 +194,6 @@
   {
     "path": "_tri_grs.subscription_form.sort",
     "value": 1,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "key",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "input",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -538,32 +228,8 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "vdo_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "video_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.img_gr_location_ty_condo.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -589,32 +255,8 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "on_drag",
-    "value": "change_local_sort",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.img_gr_location_ty_office.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -641,32 +283,8 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "on_drag",
-    "value": "change_local_sort",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.img_gr_location_ty_mall.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -693,32 +311,8 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "on_drag",
-    "value": "change_local_sort",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.img_gr_behind_the_scene.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -745,32 +339,8 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "on_drag",
-    "value": "change_local_sort",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.art_director_info_gr.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -783,18 +353,6 @@
   {
     "path": "_tri_dis.human_id_arr",
     "value": "to_be_filled",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -805,12 +363,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_dis._s_n",
     "value": "img",
     "schema": "_tri",
@@ -819,18 +371,6 @@
   {
     "path": "_tri_dis.human_id_arr",
     "value": "to_be_filled",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -841,12 +381,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_dis._s_n",
     "value": "img",
     "schema": "_tri",
@@ -859,67 +393,14 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.secondary_path_link.sort",
     "value": 0,
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_dis_ty",
-    "value": "current_path",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "banner",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.company_about.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_s_n",
-    "value": "companies",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_keys",
-    "value": [
-      "company_n",
-      "email.main_arr",
-      "city_n",
-      "country_n"
-    ],
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -936,45 +417,8 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_ty",
-    "value": "_s_doc",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_grs.location_manager_info_gr.sort",
     "value": 1,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_s_n",
-    "value": "humans",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_keys",
-    "value": [
-      "human_n.title",
-      "human_n.first",
-      "human_n.middle",
-      "human_n.last",
-      "email.main_arr",
-      "mobile.main_arr"
-    ],
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -987,18 +431,6 @@
   {
     "path": "_tri_dis._id",
     "value": "to_be_filled",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_s_doc",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -1009,31 +441,6 @@
     "log_ty": "Key not in Schema"
   },
   {
-    "path": "_tri_s_n",
-    "value": "humans",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_keys",
-    "value": [
-      "human_n.title",
-      "human_n.first",
-      "human_n.middle",
-      "human_n.last",
-      "email.main_arr",
-      "mobile.main_arr"
-    ],
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
     "path": "_tri_dis._s_n",
     "value": "humans",
     "schema": "_tri",
@@ -1042,85 +449,12 @@
   {
     "path": "_tri_dis._id",
     "value": "to_be_filled",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_s_doc",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_grs.art_director_info_gr.sort",
-    "value": 1,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_s_n",
-    "value": "humans",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "_qry",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_keys",
-    "value": [
-      "human_n.title",
-      "human_n.first",
-      "human_n.middle",
-      "human_n.last",
-      "email.main_arr",
-      "mobile.main_arr"
-    ],
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis._s_n",
-    "value": "humans",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis._id",
-    "value": "to_be_filled",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "_s_doc",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
   {
     "path": "_tri_grs.img_gr_location_ty_restaruant.sort",
     "value": 0,
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_dis_ty",
-    "value": "img_qry",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   },
@@ -1145,24 +479,6 @@
       "KMSLHowfDHZqNtGe7",
       "NpTRr8hX5ueask3mW"
     ],
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_ty",
-    "value": "img_gr",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "_tri_available",
-    "value": "all",
-    "schema": "_tri",
-    "log_ty": "Key not in Schema"
-  },
-  {
-    "path": "on_drag",
-    "value": "change_local_sort",
     "schema": "_tri",
     "log_ty": "Key not in Schema"
   }
