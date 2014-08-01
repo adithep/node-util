@@ -101,7 +101,54 @@
     return keys;
   };
 
+  Seed.prototype.value_check_switch = function (key, value, schema, log) {
+    if (key, value, schema) {
+      switch(key.key_ty) {
+        case "_st":
+          if ((typeof value === "string") && (String(value) !== "")) {
+            
+          } else {
+            log_obj = {
+              schema: schema,
+              key: key.key_n,
+              log_ty: "key_ty mismatched"
+            };
+            log.push(log_obj);
+          }
+          break;
+      }
+    }
+  };
+
+  Seed.prototype.value_check_arr = function (key, value, schema, log) {
+    if (key, value, schema) {
+      for(var i = 0; i < value.length; i++) {
+
+      }
+    }
+  };
+
   Seed.prototype.value_check = function (key, value, schema, log) {
+    if (key, value, schema) {
+      if (key.key_arr) {
+        if(Array.isArray(value)) {
+          this.value_check_arr(key, value, schema, log);
+        } else {
+          log_obj = {
+            schema: schema,
+            key: key.key_n,
+            log_ty: "Value is not Array"
+          };
+          log.push(log_obj);
+        }
+      } else {
+        this.value_check_switch(key, value, schema, log)
+      }
+    }
+  };
+
+
+  Seed.prototype.value_checke = function (key, value, schema, log) {
     var log_obj, i, obj;
     if (key, value, schema) {
       switch(key.key_ty) {
