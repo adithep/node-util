@@ -1,3 +1,169 @@
 [
-  "empty"
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "location_ty_n_arr": "Condo",
+      "location_id_arr": {
+        "_$in": [
+          "ELwKPCaJARdyYFkzq",
+          "FuvWq2sGea3bxSeQM"
+        ]
+      }
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "location_ty_n_arr": "Office",
+      "location_id_arr": {
+        "_$in": [
+          "FGADmqtBKdT5Amxyk",
+          "jucfEpoga6MgdW2vT",
+          "jdi37ZrXd6z9FDziX"
+        ]
+      }
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "location_ty_n_arr": "Mall",
+      "location_id_arr": {
+        "_$in": [
+          "D6D4RiZQZ7nQFqS27",
+          "t6WFM8CCgGiD3TC5L",
+          "oWZuGMmvMQttrMT2a"
+        ]
+      }
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "project_id_arr": {
+        "_$in": [
+          "to_be_filled"
+        ]
+      },
+      "img_ty_arr": {
+        "_$in": [
+          "to_be_filled"
+        ]
+      }
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "human_id_arr": "to_be_filled"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "human_id_arr": "to_be_filled"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "human_id_arr": "to_be_filled"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "companies",
+      "_id": "kbq2Wtg6PabRrPzob"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "humans",
+      "_id": "to_be_filled"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "humans",
+      "_id": "to_be_filled"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "humans",
+      "_id": "to_be_filled"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "approaches"
+    },
+    "log_ty": "key_ty mismatched"
+  },
+  {
+    "schema": "_tri",
+    "key": "_tri_dis",
+    "key_ty": "_st",
+    "value": {
+      "_s_n": "img",
+      "location_ty_n_arr": "Restaruant",
+      "location_id_arr": {
+        "_$in": [
+          "EmCxofXsebsXQHJLY",
+          "vFD4jn97ez4Em7Tr4",
+          "5QSJaYoCNCarWrc7y",
+          "KMSLHowfDHZqNtGe7",
+          "NpTRr8hX5ueask3mW"
+        ]
+      }
+    },
+    "log_ty": "key_ty mismatched"
+  }
 ]

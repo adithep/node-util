@@ -6,6 +6,7 @@
     path = require('path'),
     EJSON = require('./ejson'),
     random = require('./random').random(),
+    phone_format = require('./phoneformat'),
     _ = require('lodash'),
     _tra = require('traverse');
   var Db = require('mongodb').Db,
@@ -20,7 +21,7 @@
     assert = require('assert');
   var Server = require("mongo-sync").Server,
     DB = require("mongo-sync").DB;
-
+  var email_format = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
   var db_obj = {
     marathon: "marathon-str-json",
     alpha_sys: "alphas-str-json"
@@ -101,249 +102,234 @@
     return keys;
   };
 
-  Seed.prototype.value_check_switch = function (key, value, schema, log) {
-    if (key, value, schema) {
-      switch(key.key_ty) {
-        case "_st":
-          if ((typeof value === "string") && (String(value) !== "")) {
-            
-          } else {
-            log_obj = {
-              schema: schema,
-              key: key.key_n,
-              log_ty: "key_ty mismatched"
-            };
-            log.push(log_obj);
-          }
-          break;
+  Seed.prototype.find_value = function (key, obj, value, schema, id, log, one) {
+    if (key && obj && value && schema) {
+      var log_obj;
+      var count = this.col.find(obj).count();
+      if (count<=0) {
+        log_obj = {
+          schema: schema,
+          key: key.key_n,
+          value: value,
+          log_ty: "Cannot find related value."
+        };
+        log.push(log_obj);
+      } else if ((count > 1) && one) {
+        log_obj = {
+          schema: schema,
+          key: key.key_n,
+          value: value,
+          log_ty: "More than one instance of schema value exists."
+        };
+        log.push(log_obj);
       }
     }
   };
 
-  Seed.prototype.value_check_arr = function (key, value, schema, log) {
-    if (key, value, schema) {
-      for(var i = 0; i < value.length; i++) {
+  Seed.prototype.key_r = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      var obj, log_obj;
+      if (key.key_r) {
+        if (key.key_s && key.key_key) {
+          obj = {};
+          obj._s_n = key.key_s;
+          obj[key.key_key] = value;
+          this.find_value(key, obj, value, schema, id, log, true);
 
-      }
-    }
-  };
-
-  Seed.prototype.value_check = function (key, value, schema, log) {
-    if (key, value, schema) {
-      if (key.key_arr) {
-        if(Array.isArray(value)) {
-          this.value_check_arr(key, value, schema, log);
         } else {
           log_obj = {
             schema: schema,
             key: key.key_n,
-            log_ty: "Value is not Array"
+            value: value,
+            log_ty: "Related key with not key_s or key_key."
           };
           log.push(log_obj);
         }
-      } else {
-        this.value_check_switch(key, value, schema, log)
+      } else if (key._gr) {
+        if (key.key_s && key.key_key) {
+          obj = {};
+          obj._s_n = key.key_s;
+          obj[key.key_key] = {};
+          obj[key.key_key][value] = {$exists: true};
+          this.find_value(key, obj, value, schema, id, log, false);
+
+        } else {
+          log_obj = {
+            schema: schema,
+            key: key.key_n,
+            value: value,
+            log_ty: "Related key with not key_s or key_key."
+          };
+          log.push(log_obj);
+        }
       }
     }
   };
 
-
-  Seed.prototype.value_checke = function (key, value, schema, log) {
-    var log_obj, i, obj;
-    if (key, value, schema) {
-      switch(key.key_ty) {
-        case "_st":
-          if (key.key_arr) {
-            if(Array.isArray(value)) {
-              for(i = 0; i < value.length; i++) {
-                if ((typeof value === "string") && (String(value) !== "")) {
-                  if (key.key_r) {
-                    if (key.key_s && key.key_key) {
-                      obj = {};
-                      obj._s_n = key.key_s;
-                      obj[key.key_key] = value;
-                      if (this.col.find(obj).count()===0) {
-                        log_obj = {
-                          schema: schema,
-                          key: key.key_n,
-                          log_ty: "cannot find r_value"
-                        };
-                        log.push(log_obj);
-                      }
-                    } else {
-                      log_obj = {
-                        schema: schema,
-                        key: key.key_n,
-                        log_ty: "no key_s or key_key"
-                      };
-                      log.push(log_obj);
-                    }
-
-                  }
-                } else {
-                  log_obj = {
-                    schema: schema,
-                    key: key.key_n,
-                    log_ty: "key_ty mismatched"
-                  };
-                  log.push(log_obj);
-                }
-              }
-            } else {
-              log_obj = {
-                schema: schema,
-                key: key.key_n,
-                log_ty: "Value is not Array"
-              };
-              log.push(log_obj);
-            }
-          }
-          break;
-        case "_num":
-          if (key.key_arr) {
-            if(Array.isArray(value)) {
-              for(i = 0; i < value.length; i++) {
-                if ((typeof value === "number") && (isNaN(value) === false)) {
-                  if (key.key_r) {
-                    if (key.key_s && key.key_key) {
-                      obj = {};
-                      obj._s_n = key.key_s;
-                      obj[key.key_key] = value;
-                      if (this.col.find(obj).count()===0) {
-                        log_obj = {
-                          schema: schema,
-                          key: key.key_n,
-                          log_ty: "cannot find r_value"
-                        };
-                        log.push(log_obj);
-                      }
-                    } else {
-                      log_obj = {
-                        schema: schema,
-                        key: key.key_n,
-                        log_ty: "no key_s or key_key"
-                      };
-                      log.push(log_obj);
-                    }
-
-                  }
-                } else {
-                  log_obj = {
-                    schema: schema,
-                    key: key.key_n,
-                    log_ty: "key_ty mismatched"
-                  };
-                  log.push(log_obj);
-                }
-              }
-            } else {
-              log_obj = {
-                schema: schema,
-                key: key.key_n,
-                log_ty: "Value is not Array"
-              };
-              log.push(log_obj);
-            }
-          }
-          break;
-        case "_bl":
-          if (key.key_arr) {
-            if(Array.isArray(value)) {
-              for(i = 0; i < value.length; i++) {
-                if ((typeof value === "boolean")) {
-                  if (key.key_r) {
-                    if (key.key_s && key.key_key) {
-                      obj = {};
-                      obj._s_n = key.key_s;
-                      obj[key.key_key] = value;
-                      if (this.col.find(obj).count()===0) {
-                        log_obj = {
-                          schema: schema,
-                          key: key.key_n,
-                          log_ty: "cannot find r_value"
-                        };
-                        log.push(log_obj);
-                      }
-                    } else {
-                      log_obj = {
-                        schema: schema,
-                        key: key.key_n,
-                        log_ty: "no key_s or key_key"
-                      };
-                      log.push(log_obj);
-                    }
-
-                  }
-                } else {
-                  log_obj = {
-                    schema: schema,
-                    key: key.key_n,
-                    log_ty: "key_ty mismatched"
-                  };
-                  log.push(log_obj);
-                }
-              }
-            } else {
-              log_obj = {
-                schema: schema,
-                key: key.key_n,
-                log_ty: "Value is not Array"
-              };
-              log.push(log_obj);
-            }
-          }
-          break;
-        case "currency":
-          if (key.key_arr) {
-            if(Array.isArray(value)) {
-              for(i = 0; i < value.length; i++) {
-                if ((typeof value === "number") && (isNaN(value) === false)) {
-                  if (key.key_r) {
-                    if (key.key_s && key.key_key) {
-                      obj = {};
-                      obj._s_n = key.key_s;
-                      obj[key.key_key] = value;
-                      if (this.col.find(obj).count()===0) {
-                        log_obj = {
-                          schema: schema,
-                          key: key.key_n,
-                          log_ty: "cannot find r_value"
-                        };
-                        log.push(log_obj);
-                      }
-                    } else {
-                      log_obj = {
-                        schema: schema,
-                        key: key.key_n,
-                        log_ty: "no key_s or key_key"
-                      };
-                      log.push(log_obj);
-                    }
-
-                  }
-                } else {
-                  log_obj = {
-                    schema: schema,
-                    key: key.key_n,
-                    log_ty: "key_ty mismatched"
-                  };
-                  log.push(log_obj);
-                }
-              }
-            } else {
-              log_obj = {
-                schema: schema,
-                key: key.key_n,
-                log_ty: "Value is not Array"
-              };
-              log.push(log_obj);
-            }
-          }
-          break;
-        default:
+  Seed.prototype.user = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if ((typeof value === "string") && (String(value) !== "")) {
+        //this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
       }
     }
+  };
 
+  Seed.prototype._st = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if ((typeof value === "string") && (String(value) !== "")) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.obj = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (_.isPlainObject(value)) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.attrs = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (_.isPlainObject(value)) {
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype._num = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if ((typeof value === "number") && (isNaN(value) === false)) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.currency = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if ((typeof value === "number") && (isNaN(value) === false)) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype._dt = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (value instanceof Date) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.now = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (value instanceof Date) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.email = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (email_format.test(value)===true) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.phone = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (phone_format.isValidNumber(value)===true) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype._bl = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if ((typeof value === "boolean")) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.log_key_ty_mismatched = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      var log_obj;
+      log_obj = {
+        schema: schema,
+        key: key.key_n,
+        key_ty: key.key_ty,
+        value: value,
+        log_ty: "key_ty mismatched"
+      };
+      log.push(log_obj);
+    }
+  };
+
+  Seed.prototype.value_check_arr = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      var log_obj;
+      if (Array.isArray(value)) {
+        for(var i = 0; i < value.length; i++) {
+          this[key.key_ty](key, value[i], schema, id, log);
+        }
+      } else {
+        log_obj = {
+          schema: schema,
+          key: key.key_n,
+          value: value,
+          log_ty: "Key is Arrray but value is not."
+        };
+        log.push(log_obj);
+      }
+
+    }
+  };
+
+  Seed.prototype.value_check = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      var log_obj;
+      if (this[key.key_ty]) {
+        if (key.key_arr) {
+          this.value_check_arr(key, value, schema, id, log);
+        } else {
+          this[key.key_ty](key, value, schema, id, log);
+        }
+      } else {
+        log_obj = {
+          schema: schema,
+          key: key.key_n,
+          key_ty: key.key_ty,
+          value: value,
+          log_ty: "No function for key type."
+        };
+        log.push(log_obj);
+      }
+
+    }
   };
 
   Seed.prototype.check_all = function () {
@@ -355,7 +341,7 @@
         for(var doc_k in doc) {
           if ((s_n._s_keys.indexOf(doc_k) !== -1)) {
             var key_obj = keys[doc_k];
-            //self.value_check(keys[doc_k], doc[doc_k], s_n._s_n_for, log);
+            self.value_check(keys[doc_k], doc[doc_k], s_n._s_n_for, doc._id, log);
           } else {
             var log_obj = {
               key: doc_k,
