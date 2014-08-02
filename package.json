@@ -8,10 +8,11 @@
   },
   "dependencies": {
     "walk": "*",
-    "crypto": "*",
     "mongo-sync": "*",
     "mongodb": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "lodash": "*",
+    "traverse": "*"
   },
   "author": "Adithep SriNarula",
   "license": "ISC"

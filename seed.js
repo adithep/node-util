@@ -43,12 +43,11 @@
         var n_s_json = [];
         this.col.remove({});
         console.log("seeding keys");
-        console.time("seed_keys");
+        console.time("keys seeded in");
         var key_s_obj = this.key_union(s_json, to_load);
         var keys_obj = this.seed_keys(keys_json, key_s_obj, to_load);
         this.col.insert(keys_obj);
-        console.log("keys seeded");
-        console.timeEnd("seed_keys");
+        console.timeEnd("keys seeded in");
         this.seed_schema(s_json, to_load);
 
         //this.write_file(keys_obj, 'temp/keys.json');
@@ -137,7 +136,7 @@
       var obj, log_obj;
       if (key.key_r) {
         if (key.key_s && key.key_key) {
-          if (key.key_s !== schema) {
+          if ((key.key_s !== schema) || (key.key_n !== key.key_key)) {
             obj = {};
             obj._s_n = key.key_s;
             obj[key.key_key] = value;
@@ -390,7 +389,7 @@
     self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys", "cities"]}}).forEach(function (s_n) {
       var keys = self.check_keys(s_n._s_keys, s_n._s_n_for, log);
       console.log("checking " + s_n._s_n_for);
-      console.time("check");
+      console.time(s_n._s_n_for+" checked in");
       self.col.find({_s_n: s_n._s_n_for}).forEach(function (doc) {
         for(var doc_k in doc) {
           if ((s_n._s_keys.indexOf(doc_k) !== -1)) {
@@ -408,9 +407,8 @@
           }
         }
       });
-      console.log(s_n._s_n_for+" checked");
-      console.timeEnd("check");
-      var log_str = "log/log_"+s_n._s_n_for+".json";
+      console.timeEnd(s_n._s_n_for+" checked in");
+      var log_str = "log/log-"+s_n._s_n_for+".json";
       if (log && log.length > 0) {
         self.write_file(log, log_str);
       } else {
@@ -533,7 +531,7 @@
     for(var i = 0; i < s_json.length; i++) {
       if (to_load[s_json[i]._s_n_for]) {
         console.log("seeding "+ s_json[i]._s_n_for);
-        console.time("seed");
+        console.time(s_json[i]._s_n_for+" seeded in");
         if (s_json[i]._s_n_for === "_tri") {
           this.seed_s_json_tri(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for);
         } else if (s_json[i].web_spec) {
@@ -543,8 +541,7 @@
         }
         this.create_obj(s_json[i]);
         n_s_json.push(s_json[i]);
-        console.log(s_json[i]._s_n_for+" seeded");
-        console.timeEnd("seed");
+        console.timeEnd(s_json[i]._s_n_for+" seeded in");
       } else if ((s_json[i]._s_n_for === "_s") || (s_json[i]._s_n_for === "keys")) {
         this.create_obj(s_json[i]);
         n_s_json.push(s_json[i]);
