@@ -429,6 +429,9 @@
         objm.from_id = jm._id;
         objm.from_key = obj._tri_dis_key;
         objm.dis = jm[obj._tri_dis_key];
+        if (obj._tri_dis_key === "path_dis") {
+          objm.href = jm.path_n;
+        }
         obj._tri_dis = objm;
         delete obj._tri_dis_key;
       }
