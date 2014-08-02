@@ -5,7 +5,7 @@ git commit -m "$1" || :
 git push
 }
 read -p "Commit description: " desc
-cd ~/Desktop/website/
+cd ../
 git submodule foreach "
   git add -A .;
   git commit -m $desc || :;

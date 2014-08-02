@@ -1,65 +1,44 @@
 [
   {
-    "schema": "companies",
-    "key": "_adr_main_country_n",
-    "key_slave": "_adr_main_city_n",
-    "value": "France",
-    "log_ty": "Key Slave Mismatched."
-  },
-  {
-    "schema": "humans",
-    "key": "_adr_main_country_n",
-    "key_slave": "_adr_main_city_n",
-    "value": "Thailand",
-    "log_ty": "Key Slave Mismatched."
-  },
-  {
-    "schema": "humans",
-    "key": "_adr_main_country_n",
-    "key_slave": "_adr_main_city_n",
-    "value": "Thailand",
-    "log_ty": "Key Slave Mismatched."
-  },
-  {
     "schema": "_tri",
     "key": "_tri_dis",
     "value": "{\"_s_n\":\"img\",\"project_id_arr\":{\"$in\":[\"to_be_filled\"]},\"img_ty_arr\":{\"$in\":[\"to_be_filled\"]}}",
-    "log_ty": "Cannot find related value."
+    "log_ty": "Cannot find related value, or slave mismatched."
   },
   {
     "schema": "_tri",
     "key": "_tri_dis",
     "value": "{\"_s_n\":\"img\",\"human_id_arr\":\"to_be_filled\"}",
-    "log_ty": "Cannot find related value."
+    "log_ty": "Cannot find related value, or slave mismatched."
   },
   {
     "schema": "_tri",
     "key": "_tri_dis",
     "value": "{\"_s_n\":\"img\",\"human_id_arr\":\"to_be_filled\"}",
-    "log_ty": "Cannot find related value."
+    "log_ty": "Cannot find related value, or slave mismatched."
   },
   {
     "schema": "_tri",
     "key": "_tri_dis",
     "value": "{\"_s_n\":\"img\",\"human_id_arr\":\"to_be_filled\"}",
-    "log_ty": "Cannot find related value."
+    "log_ty": "Cannot find related value, or slave mismatched."
   },
   {
     "schema": "_tri",
     "key": "_tri_dis",
     "value": "{\"_s_n\":\"humans\",\"_id\":\"to_be_filled\"}",
-    "log_ty": "Cannot find related value."
+    "log_ty": "Cannot find related value, or slave mismatched."
   },
   {
     "schema": "_tri",
     "key": "_tri_dis",
     "value": "{\"_s_n\":\"humans\",\"_id\":\"to_be_filled\"}",
-    "log_ty": "Cannot find related value."
+    "log_ty": "Cannot find related value, or slave mismatched."
   },
   {
     "schema": "_tri",
     "key": "_tri_dis",
     "value": "{\"_s_n\":\"humans\",\"_id\":\"to_be_filled\"}",
-    "log_ty": "Cannot find related value."
+    "log_ty": "Cannot find related value, or slave mismatched."
   }
 ]

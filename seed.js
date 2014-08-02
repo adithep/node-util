@@ -42,9 +42,15 @@
       if (s_json && keys_json && to_load) {
         var n_s_json = [];
         this.col.remove({});
-        var key_s_obj = this.seed_schema(s_json, to_load);
+        console.log("seeding keys");
+        console.time("seed_keys");
+        var key_s_obj = this.key_union(s_json, to_load);
         var keys_obj = this.seed_keys(keys_json, key_s_obj, to_load);
         this.col.insert(keys_obj);
+        console.log("keys seeded");
+        console.timeEnd("seed_keys");
+        this.seed_schema(s_json, to_load);
+
         //this.write_file(keys_obj, 'temp/keys.json');
 
         this.check_all();
@@ -111,7 +117,7 @@
           schema: schema,
           key: key.key_n,
           value: value,
-          log_ty: "Cannot find related value."
+          log_ty: "Cannot find related value, or slave mismatched."
         };
         log.push(log_obj);
       } else if ((count > 1) && one) {
@@ -131,10 +137,36 @@
       var obj, log_obj;
       if (key.key_r) {
         if (key.key_s && key.key_key) {
-          obj = {};
-          obj._s_n = key.key_s;
-          obj[key.key_key] = value;
-          this.find_value(key, obj, value, schema, id, log, true);
+          if (key.key_s !== schema) {
+            obj = {};
+            obj._s_n = key.key_s;
+            obj[key.key_key] = value;
+            if (key.key_slave || key.key_slave_in) {
+              var master_obj = this.col.findOne({_id: id});
+              var master_key = this.col.findOne({_s_n: "keys", key_n: key.key_slave});
+              if (master_key && master_obj) {
+                if (master_key.key_r) {
+                  if (master_obj[key.key_slave]) {
+                    if (Array.isArray(master_obj[key.key_slave])) {
+                      obj[master_key.key_key] = {$in: master_obj[key.key_slave]};
+                    } else {
+                      obj[master_key.key_key] = master_obj[key.key_slave];
+                    }
+                  }
+                }
+              } else {
+                log_obj = {
+                  schema: schema,
+                  key: key.key_n,
+                  key_slave: key.key_slave,
+                  value: value,
+                  log_ty: "Master key for Slave doesn't exist."
+                };
+                log.push(log_obj);
+              }
+            }
+            this.find_value(key, obj, value, schema, id, log, true);
+          }
 
         } else {
           log_obj = {
@@ -163,6 +195,7 @@
           log.push(log_obj);
         }
       }
+
     }
   };
 
@@ -190,6 +223,25 @@
     if (key && value && schema) {
       if (_.isPlainObject(value)) {
         this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.search = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      var origi = this.col.findOne({_id: id});
+      if (origi._tri_dis_key_arr && !origi._tri_dis_ldata) {
+        this.find_value(key, EJSON.parse(value), value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.geo_json = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (_.isPlainObject(value)) {
+        //this.key_r(key, value, schema, id, log);
       } else {
         this.log_key_ty_mismatched(key, value, schema, id, log);
       }
@@ -335,8 +387,10 @@
   Seed.prototype.check_all = function () {
     var self = this;
     var log = [];
-    self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys"]}}).forEach(function (s_n) {
+    self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys", "cities"]}}).forEach(function (s_n) {
       var keys = self.check_keys(s_n._s_keys, s_n._s_n_for, log);
+      console.log("checking " + s_n._s_n_for);
+      console.time("check");
       self.col.find({_s_n: s_n._s_n_for}).forEach(function (doc) {
         for(var doc_k in doc) {
           if ((s_n._s_keys.indexOf(doc_k) !== -1)) {
@@ -354,11 +408,35 @@
           }
         }
       });
+      console.log(s_n._s_n_for+" checked");
+      console.timeEnd("check");
+      var log_str = "log/log_"+s_n._s_n_for+".json";
+      if (log && log.length > 0) {
+        self.write_file(log, log_str);
+      } else {
+        var pp = path.resolve(__dirname, log_str);
+        if (fs.existsSync(pp)) {
+          fs.unlinkSync(pp);
+        }
+      }
+      log = [];
     });
-    if (log && log.length > 0) {
-      self.write_file(log, 'temp/log.json');
-    } else {
-      self.write_file(["empty"], 'temp/log.json');
+  };
+
+  Seed.prototype._tri_extra = function (obj, s_n) {
+    if (obj._tri_dis_key && obj._tri_dis) {
+      var jm = this.col.findOne(obj._tri_dis);
+      if (jm && jm[obj._tri_dis_key]) {
+        var objm = {};
+        objm.from_id = jm._id;
+        objm.from_key = obj._tri_dis_key;
+        objm.dis = jm[obj._tri_dis_key];
+        obj._tri_dis = objm;
+        delete obj._tri_dis_key;
+      }
+    }
+    if (obj._tri_dis_key_arr && obj._tri_dis) {
+      obj._tri_dis = EJSON.stringify(obj._tri_dis);
     }
   };
 
@@ -405,8 +483,10 @@
           if (tri_defaults[json[m]._tri_ty]) {
             this.combine_def(tri_defaults[json[m]._tri_ty], json[m]);
 
+
           }
           this.create_obj(json[m], s_n);
+          this._tri_extra(json[m], json[m]);
 
         }
         this.col.insert(json);
@@ -436,11 +516,24 @@
     }
 
   };
-  Seed.prototype.seed_schema = function (s_json, to_load) {
+
+  Seed.prototype.key_union = function (s_json, to_load) {
     var key_s_obj = [];
+    for(var i = 0; i < s_json.length; i++) {
+      if (to_load[s_json[i]._s_n_for] || (s_json[i]._s_n_for === "_s") ||  (s_json[i]._s_n_for === "keys")) {
+        key_s_obj = _.union(key_s_obj, s_json[i]._s_keys);
+      }
+
+
+    }
+    return key_s_obj;
+  };
+  Seed.prototype.seed_schema = function (s_json, to_load) {
     var n_s_json = [];
     for(var i = 0; i < s_json.length; i++) {
       if (to_load[s_json[i]._s_n_for]) {
+        console.log("seeding "+ s_json[i]._s_n_for);
+        console.time("seed");
         if (s_json[i]._s_n_for === "_tri") {
           this.seed_s_json_tri(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for);
         } else if (s_json[i].web_spec) {
@@ -449,19 +542,19 @@
           this.seed_s_json(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for);
         }
         this.create_obj(s_json[i]);
-        key_s_obj = _.union(key_s_obj, s_json[i]._s_keys);
         n_s_json.push(s_json[i]);
+        console.log(s_json[i]._s_n_for+" seeded");
+        console.timeEnd("seed");
       } else if ((s_json[i]._s_n_for === "_s") || (s_json[i]._s_n_for === "keys")) {
         this.create_obj(s_json[i]);
-        key_s_obj = _.union(key_s_obj, s_json[i]._s_keys);
         n_s_json.push(s_json[i]);
       }
+
 
 
     }
 
     this.col.insert(n_s_json);
-    return key_s_obj;
   };
 
   Seed.prototype.write_file = function (obj, path_to) {
@@ -475,6 +568,9 @@
     var obj = EJSON.clone(key_obj);
     obj.key_n = obj.key_n + "_arr";
     obj._dt = new Date();
+    if (obj.key_slave) {
+      obj.key_slave = obj.key_slave + "_arr";
+    }
     if (!obj._id) {
       obj._id = random.id();
     }
@@ -491,7 +587,7 @@
           keys_json[i]._usr = "root";
 
           if (keys_json[i].key_r === true) {
-            if (!to_load[keys_json[i].key_s]) {
+            if ((!to_load[keys_json[i].key_s]) && (keys_json[i].key_s !== "_s") && (keys_json[i].key_s !== "keys")) {
               delete keys_json[i].key_r;
               delete keys_json[i].key_s;
               delete keys_json[i].key_key;
