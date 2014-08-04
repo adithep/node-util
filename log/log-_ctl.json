@@ -1,0 +1,54 @@
+[
+  {
+    "schema": "_ctl",
+    "key": "data_dis_key_arr",
+    "value": {
+      "_s_n": "keys",
+      "key_n": "userName"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
+    "key": "data",
+    "value": {
+      "_s_n": {
+        "$in": [
+          "humans",
+          "img"
+        ]
+      },
+      "_id": {
+        "$in": [
+          "to_be_filled"
+        ]
+      }
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
+    "key": "slave_data",
+    "value": {
+      "_id": {
+        "_s_n": "img",
+        "img_uuid": "to_be_filled"
+      }
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
+    "key": "data",
+    "value": {
+      "_s_n": "img",
+      "project_id_arr": {
+        "$in": [
+          "to_be_filled"
+        ]
+      },
+      "img_ty_arr": "behind_the_scene"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  }
+]

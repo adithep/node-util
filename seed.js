@@ -115,7 +115,7 @@
         log_obj = {
           schema: schema,
           key: key.key_n,
-          value: value,
+          value: obj,
           log_ty: "Cannot find related value, or slave mismatched."
         };
         log.push(log_obj);
@@ -123,7 +123,7 @@
         log_obj = {
           schema: schema,
           key: key.key_n,
-          value: value,
+          value: obj,
           log_ty: "More than one instance of schema value exists."
         };
         log.push(log_obj);
@@ -133,16 +133,16 @@
 
   Seed.prototype.key_r = function (key, value, schema, id, log) {
     if (key && value && schema) {
-      var obj, log_obj;
+      var obj, log_obj, master_obj, master_key;
       if (key.key_r) {
         if (key.key_s && key.key_key) {
-          if ((key.key_s !== schema) || (key.key_n !== key.key_key)) {
+          if ((key.key_s !== schema) || ((key.key_n !== key.key_key) && (key.key_s === schema))) {
             obj = {};
             obj._s_n = key.key_s;
             obj[key.key_key] = value;
             if (key.key_slave || key.key_slave_in) {
-              var master_obj = this.col.findOne({_id: id});
-              var master_key = this.col.findOne({_s_n: "keys", key_n: key.key_slave});
+              master_obj = this.col.findOne({_id: id});
+              master_key = this.col.findOne({_s_n: "keys", key_n: key.key_slave});
               if (master_key && master_obj) {
                 if (master_key.key_r) {
                   if (master_obj[key.key_slave]) {
@@ -176,20 +176,34 @@
           };
           log.push(log_obj);
         }
-      } else if (key._gr) {
-        if (key.key_s && key.key_key) {
-          obj = {};
-          obj._s_n = key.key_s;
-          obj[key.key_key] = {};
-          obj[key.key_key][value] = {$exists: true};
-          this.find_value(key, obj, value, schema, id, log, false);
+      } else if (key.key_gr) {
+        if (key.key_gr_key) {
+          master_obj = this.col.findOne({_id: id});
+          if (master_obj[key.key_gr_key]) {
+            master_key = this.col.findOne({_s_n: "keys", key_n: master_obj[key.key_gr_key]});
+            if (master_key) {
+              obj = {};
+              obj._s_n = master_key.key_s;
+              obj[master_key.key_key] = value;
+              this.find_value(key, obj, value, schema, id, log, false);
+            } else {
+              log_obj = {
+                schema: schema,
+                key: key.key_n,
+                value: value,
+                log_ty: "Master key of key_gr not found."
+              };
+              log.push(log_obj);
+            }
+
+          }
 
         } else {
           log_obj = {
             schema: schema,
             key: key.key_n,
             value: value,
-            log_ty: "Related key with not key_s or key_key."
+            log_ty: "Key seems to be gr, but no gr_key."
           };
           log.push(log_obj);
         }
@@ -228,12 +242,9 @@
     }
   };
 
-  Seed.prototype.search = function (key, value, schema, id, log) {
+  Seed.prototype.ejson = function (key, value, schema, id, log) {
     if (key && value && schema) {
-      var origi = this.col.findOne({_id: id});
-      if (origi._tri_dis_key_arr && !origi._tri_dis_ldata) {
-        this.find_value(key, EJSON.parse(value), value, schema, id, log);
-      }
+      this.find_value(key, EJSON.parse(value), value, schema, id, log);
     }
   };
 
@@ -247,9 +258,9 @@
     }
   };
 
-  Seed.prototype.attrs = function (key, value, schema, id, log) {
+  Seed.prototype.evts = function (key, value, schema, id, log) {
     if (key && value && schema) {
-      if (_.isPlainObject(value)) {
+      if (Array.isArray(value)) {
       } else {
         this.log_key_ty_mismatched(key, value, schema, id, log);
       }
@@ -421,23 +432,12 @@
     });
   };
 
-  Seed.prototype._tri_extra = function (obj, s_n) {
-    if (obj._tri_dis_key && obj._tri_dis) {
-      var jm = this.col.findOne(obj._tri_dis);
-      if (jm && jm[obj._tri_dis_key]) {
-        var objm = {};
-        objm.from_id = jm._id;
-        objm.from_key = obj._tri_dis_key;
-        objm.dis = jm[obj._tri_dis_key];
-        if (obj._tri_dis_key === "path_dis") {
-          objm.href = jm.path_n;
-        }
-        obj._tri_dis = objm;
-        delete obj._tri_dis_key;
-      }
+  Seed.prototype._ctl_extra = function (obj, s_n) {
+    if (obj.data) {
+      obj.data = EJSON.stringify(obj.data);
     }
-    if (obj._tri_dis_key_arr && obj._tri_dis) {
-      obj._tri_dis = EJSON.stringify(obj._tri_dis);
+    if (obj.slave_data) {
+      obj.slave_data = EJSON.stringify(obj.slave_data);
     }
   };
 
@@ -472,8 +472,7 @@
     }
   };
 
-  Seed.prototype.seed_s_json_tri = function (arr, filter, s_n) {
-    var tri_defaults = EJSON.parse(fs.readFileSync('../json/'+db_obj[this.database]+'/_tri_defaults.json', 'utf-8'));
+  Seed.prototype.seed_s_json_ctl = function (arr, filter, s_n) {
     for(var i = 0; i < arr.length; i++) {
       if (filter.indexOf(arr[i]._n) === -1) {
         arr.splice(i, 1);
@@ -481,13 +480,8 @@
         var json_path = '../json/'+db_obj[this.database]+'/' + arr[i].path;
         var json = EJSON.parse(fs.readFileSync(json_path, 'utf-8'));
         for(var m = 0; m < json.length; m++) {
-          if (tri_defaults[json[m]._tri_ty]) {
-            this.combine_def(tri_defaults[json[m]._tri_ty], json[m]);
-
-
-          }
           this.create_obj(json[m], s_n);
-          this._tri_extra(json[m], json[m]);
+          this._ctl_extra(json[m], json[m]);
 
         }
         this.col.insert(json);
@@ -535,8 +529,8 @@
       if (to_load[s_json[i]._s_n_for]) {
         console.log("seeding "+ s_json[i]._s_n_for);
         console.time(s_json[i]._s_n_for+" seeded in");
-        if (s_json[i]._s_n_for === "_tri") {
-          this.seed_s_json_tri(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for);
+        if (s_json[i]._s_n_for === "_ctl") {
+          this.seed_s_json_ctl(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for);
         } else if (s_json[i].web_spec) {
           this.seed_s_json(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for, true);
         } else {
