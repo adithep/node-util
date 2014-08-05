@@ -1,10 +1,15 @@
 [
   {
     "schema": "_ctl",
-    "key": "data_dis_key_arr",
+    "key": "data",
     "value": {
-      "_s_n": "keys",
-      "key_n": "userName"
+      "_s_n": "img",
+      "project_id_arr": {
+        "$in": [
+          "to_be_filled"
+        ]
+      },
+      "img_ty_arr": "behind_the_scene"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   },
@@ -39,15 +44,10 @@
   },
   {
     "schema": "_ctl",
-    "key": "data",
+    "key": "data_dis_key_arr",
     "value": {
-      "_s_n": "img",
-      "project_id_arr": {
-        "$in": [
-          "to_be_filled"
-        ]
-      },
-      "img_ty_arr": "behind_the_scene"
+      "_s_n": "keys",
+      "key_n": "username"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   }
