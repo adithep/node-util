@@ -267,6 +267,15 @@
     }
   };
 
+  Seed.prototype.htag = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (Array.isArray(value)) {
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
   Seed.prototype._num = function (key, value, schema, id, log) {
     if (key && value && schema) {
       if ((typeof value === "number") && (isNaN(value) === false)) {
