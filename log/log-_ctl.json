@@ -1,6 +1,15 @@
 [
   {
     "schema": "_ctl",
+    "key": "data_dis_key_arr",
+    "value": {
+      "_s_n": "keys",
+      "key_n": "username"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
     "key": "data",
     "value": {
       "_s_n": "img",
@@ -39,15 +48,6 @@
         "_s_n": "img",
         "img_uuid": "to_be_filled"
       }
-    },
-    "log_ty": "Cannot find related value, or slave mismatched."
-  },
-  {
-    "schema": "_ctl",
-    "key": "data_dis_key_arr",
-    "value": {
-      "_s_n": "keys",
-      "key_n": "username"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   }
