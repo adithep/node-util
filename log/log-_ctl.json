@@ -1,6 +1,33 @@
 [
   {
     "schema": "_ctl",
+    "key": "tem_ty_n",
+    "value": {
+      "_s_n": "templates",
+      "tem_ty_n": "sub_path"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
+    "key": "data",
+    "value": {
+      "_s_n": "paths",
+      "path_n": "blank"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
+    "key": "data_dis_key_arr",
+    "value": {
+      "_s_n": "keys",
+      "key_n": "username"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
     "key": "data",
     "value": {
       "_s_n": "img",
@@ -10,6 +37,15 @@
         ]
       },
       "img_ty_arr": "behind_the_scene"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
+    "key": "tem_ty_n",
+    "value": {
+      "_s_n": "templates",
+      "tem_ty_n": "info_with_img"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   },
@@ -44,10 +80,10 @@
   },
   {
     "schema": "_ctl",
-    "key": "data_dis_key_arr",
+    "key": "tem_ty_n",
     "value": {
-      "_s_n": "keys",
-      "key_n": "username"
+      "_s_n": "templates",
+      "tem_ty_n": "info_with_slave_img"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   }

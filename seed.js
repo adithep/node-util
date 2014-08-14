@@ -22,43 +22,140 @@
   var Server = require("mongo-sync").Server,
     DB = require("mongo-sync").DB;
   var email_format = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-  var db_obj = {
-    marathon: "marathon-str-json",
-    alpha_sys: "alphas-str-json"
-  };
 
 
 
   function Seed() {}
 
-  Seed.prototype.seed_all = function (database) {
-    if (db_obj[database]) {
-      this.database = database;
-      var server = new Server('127.0.0.1:27017');
-      this.col = server.db(database).getCollection("data");
-      var s_json = EJSON.parse(fs.readFileSync('../json/_s.json', 'utf-8'));
-      var keys_json = EJSON.parse(fs.readFileSync('../json/keys.json', 'utf-8'));
-      var to_load = EJSON.parse(fs.readFileSync('../json/'+db_obj[database]+'/_s_to_load.json', 'utf-8'));
-      if (s_json && keys_json && to_load) {
-        var n_s_json = [];
-        this.col.remove({});
-        console.log("seeding keys");
-        console.time("keys seeded in");
-        var key_s_obj = this.key_union(s_json, to_load);
-        var keys_obj = this.seed_keys(keys_json, key_s_obj, to_load);
-        this.col.insert(keys_obj);
-        console.timeEnd("keys seeded in");
-        this.seed_schema(s_json, to_load);
+  Seed.prototype.seed_all = function () {
+    var server = new Server('127.0.0.1:27017');
+    this.col = server.db("alphaDB").getCollection("data");
+    var s_json = EJSON.parse(fs.readFileSync('../json/_s.json', 'utf-8'));
+    var keys_json = EJSON.parse(fs.readFileSync('../json/keys.json', 'utf-8'));
+    if (s_json && keys_json) {
+      var n_s_json = [];
+      this.col.remove({});
+      this.seed_keys(keys_json);
+      this.seed_schema(s_json);
+      //this.write_file(keys_obj, 'temp/keys.json');
+      this.custom_sort();
+      this.check_all();
 
-        //this.write_file(keys_obj, 'temp/keys.json');
-
-        this.check_all();
-
-      }
-
-      server.close();
     }
 
+    server.close();
+
+
+  };
+
+  Seed.prototype.custom_sort = function () {
+    var self = this;
+    self.col.find({_s_n: "apps"}).forEach(function(doc){
+      if (doc.app_root) {
+        self.col.find({_s_n: "_ctl", _ctl_n: {$in: doc.app_root}}).forEach(function(ctl_obj){
+          self.col.update(
+            {_id: ctl_obj._id},
+            {$addToSet: {app_n_arr: doc.app_n}, $set: {'sort.paths.app_root': doc.app_root.indexOf(ctl_obj._ctl_n)}}
+          );
+        });
+        var data = [];
+        data[0] = {'sort.paths.app_root': {$exists: true}};
+        data[1] = {sort: {'sort.paths.app_root': 1}};
+        var ej_data = EJSON.stringify(data[0]);
+        var ej_data1 = EJSON.stringify(data[1]);
+        self.col.update(
+          {_id: doc._id},
+          {$set: {app_root: {data: ej_data, data_opt: ej_data1}}}
+        );
+      }
+      if (doc.paths) {
+        for (var path_key in doc.paths) {
+          self.sort_ctl(doc._id, path_key, doc.paths[path_key], doc.app_n);
+        }
+      }
+    });
+  };
+
+  Seed.prototype.tag_data = function (id, str, arr, key, app) {
+    var self = this;
+    var obj = {};
+    obj[str] = arr.indexOf(key);
+    self.col.update(
+      {_id: id},
+      {$addToSet: {app_n_arr: app}, $set: obj}
+    );
+  };
+
+  Seed.prototype._ctl_loop = function (ctl_obj, app) {
+    var self = this;
+    if (ctl_obj.data) {
+      var query = EJSON.parse(ctl_obj.data);
+      if (ctl_obj.data_sort_key && ctl_obj.data_sort_arr) {
+        var _ctl_str = 'sort.' + ctl_obj._s_n + '.' + ctl_obj._ctl_n;
+        self.col.find(query).forEach(function(data_doc){
+          if (data_doc[ctl_obj.data_sort_key]) {
+            self.tag_data(data_doc._id, _ctl_str, ctl_obj.data_sort_arr, ctl_obj.data_sort_key, app);
+          }
+          if (data_doc._s_n === "_ctl") {
+            self._ctl_loop(data_doc, app);
+          }
+        });
+        var data = [];
+        data[0] = {};
+        data[0][_ctl_str] = {$exists: true};
+        data[1] = {sort: {}};
+        data[1].sort[_ctl_str] = 1;
+        var ej_data = EJSON.stringify(data[0]);
+        var ej_data1 = EJSON.stringify(data[1]);
+        var data_str = ctl_obj._s_n + '.' + ctl_obj._ctl_n;
+        self.col.update(
+          {_id: ctl_obj._id},
+          {$set: {data: ej_data, data_opt: ej_data1}, $unset: {data_cort_arr: "", data_sort_key: ""}}
+        );
+      } else {
+        self.col.find(query).forEach(function(data_doc){
+          self.col.update(
+            {_id: data_doc._id},
+            {$addToSet: {app_n_arr: app}}
+          );
+          if (data_doc._s_n === "_ctl") {
+            self._ctl_loop(data_doc, app);
+          }
+        });
+      }
+
+
+    }
+  };
+
+  Seed.prototype.sort_ctl = function (id, key, arr, app) {
+    var self = this;
+    var str = 'sort.paths.' + key;
+    self.col.find({_s_n: "_ctl", _ctl_n: {$in: arr}}).forEach(function(ctl_obj){
+      var obj = {};
+      obj[str] = arr.indexOf(ctl_obj._ctl_n);
+      self.col.update(
+        {_id: ctl_obj._id},
+        {$addToSet: {app_n_arr: app}, $set: obj}
+      );
+      self._ctl_loop(ctl_obj, app);
+    });
+    var data = [];
+    data[0] = {};
+    data[0][str] = {$exists: true};
+    data[1] = {sort: {}};
+    data[1].sort[str] = 1;
+    var ej_data = EJSON.stringify(data[0]);
+    var ej_data1 = EJSON.stringify(data[1]);
+    var data_str = 'paths.' + key;
+    var data_obj = {};
+    data_obj[data_str] = {};
+    data_obj[data_str].data = ej_data;
+    data_obj[data_str].data_opt = ej_data[1];
+    self.col.update(
+      {_id: id},
+      {$set: data_obj}
+    );
 
   };
 
@@ -242,6 +339,26 @@
     }
   };
 
+  Seed.prototype.sort = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (_.isPlainObject(value)) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
+  Seed.prototype.paths = function (key, value, schema, id, log) {
+    if (key && value && schema) {
+      if (_.isPlainObject(value)) {
+        this.key_r(key, value, schema, id, log);
+      } else {
+        this.log_key_ty_mismatched(key, value, schema, id, log);
+      }
+    }
+  };
+
   Seed.prototype.ejson = function (key, value, schema, id, log) {
     if (key && value && schema) {
       this.find_value(key, EJSON.parse(value), value, schema, id, log);
@@ -406,7 +523,7 @@
   Seed.prototype.check_all = function () {
     var self = this;
     var log = [];
-    self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys", "cities"]}}).forEach(function (s_n) {
+    self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys", "cities", "translations"]}}).forEach(function (s_n) {
       var keys = self.check_keys(s_n._s_keys, s_n._s_n_for, log);
       console.log("checking " + s_n._s_n_for);
       console.time(s_n._s_n_for+" checked in");
@@ -481,76 +598,58 @@
     }
   };
 
-  Seed.prototype.seed_s_json_ctl = function (arr, filter, s_n) {
+  Seed.prototype.seed_s_json_ctl = function (arr, s_n) {
     for(var i = 0; i < arr.length; i++) {
-      if (filter.indexOf(arr[i]._n) === -1) {
-        arr.splice(i, 1);
-      } else {
-        var json_path = '../json/'+db_obj[this.database]+'/' + arr[i].path;
-        var json = EJSON.parse(fs.readFileSync(json_path, 'utf-8'));
-        for(var m = 0; m < json.length; m++) {
-          this.create_obj(json[m], s_n);
-          this._ctl_extra(json[m], json[m]);
+      var json_path = '../json/' + arr[i].path;
+      var json = EJSON.parse(fs.readFileSync(json_path, 'utf-8'));
+      for(var m = 0; m < json.length; m++) {
+        this.create_obj(json[m], s_n);
+        this._ctl_extra(json[m], json[m]);
 
-        }
-        this.col.insert(json);
       }
+      this.col.insert(json);
     }
 
   };
 
-  Seed.prototype.seed_s_json = function (arr, filter, s_n, opt) {
+  Seed.prototype.seed_s_json = function (arr, s_n) {
     var json_path;
     for(var i = 0; i < arr.length; i++) {
-      if (filter.indexOf(arr[i]._n) === -1) {
-        arr.splice(i, 1);
-      } else {
-        if (opt) {
-          json_path = '../json/'+db_obj[this.database]+'/' + arr[i].path;
-        } else {
-          json_path = '../json/' + arr[i].path;
-        }
 
+      if (arr[i].path) {
+
+        json_path = '../json/' + arr[i].path;
         var json = EJSON.parse(fs.readFileSync(json_path, 'utf-8'));
-        for(var m = 0; m < json.length; m++) {
-          this.create_obj(json[m], s_n);
+        if (Array.isArray(json) && json.length > 0) {
+          for(var m = 0; m < json.length; m++) {
+            this.create_obj(json[m], s_n);
+          }
+          this.col.insert(json);
         }
-        this.col.insert(json);
+
       }
     }
 
   };
 
-  Seed.prototype.key_union = function (s_json, to_load) {
-    var key_s_obj = [];
-    for(var i = 0; i < s_json.length; i++) {
-      if (to_load[s_json[i]._s_n_for] || (s_json[i]._s_n_for === "_s") ||  (s_json[i]._s_n_for === "keys")) {
-        key_s_obj = _.union(key_s_obj, s_json[i]._s_keys);
-      }
-
-
-    }
-    return key_s_obj;
-  };
-  Seed.prototype.seed_schema = function (s_json, to_load) {
+  Seed.prototype.seed_schema = function (s_json) {
     var n_s_json = [];
     for(var i = 0; i < s_json.length; i++) {
-      if (to_load[s_json[i]._s_n_for]) {
+
+      if ((s_json[i]._s_n_for === "_s") || (s_json[i]._s_n_for === "keys")) {
+        this.create_obj(s_json[i]);
+        n_s_json.push(s_json[i]);
+      } else {
         console.log("seeding "+ s_json[i]._s_n_for);
         console.time(s_json[i]._s_n_for+" seeded in");
         if (s_json[i]._s_n_for === "_ctl") {
-          this.seed_s_json_ctl(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for);
-        } else if (s_json[i].web_spec) {
-          this.seed_s_json(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for, true);
+          this.seed_s_json_ctl(s_json[i].json , s_json[i]._s_n_for);
         } else {
-          this.seed_s_json(s_json[i].json, to_load[s_json[i]._s_n_for], s_json[i]._s_n_for);
+          this.seed_s_json(s_json[i].json, s_json[i]._s_n_for);
         }
         this.create_obj(s_json[i]);
         n_s_json.push(s_json[i]);
         console.timeEnd(s_json[i]._s_n_for+" seeded in");
-      } else if ((s_json[i]._s_n_for === "_s") || (s_json[i]._s_n_for === "keys")) {
-        this.create_obj(s_json[i]);
-        n_s_json.push(s_json[i]);
       }
 
 
@@ -581,39 +680,31 @@
 
   };
 
-  Seed.prototype.seed_keys = function (keys_json, key_s_obj, to_load) {
+  Seed.prototype.seed_keys = function (keys_json) {
     if (keys_json && Array.isArray(keys_json)) {
+      console.log("seeding keys");
+      console.time("keys seeded in");
       var arr = [];
       for(var i = 0; i < keys_json.length; i++) {
 
           keys_json[i]._s_n = "keys";
           keys_json[i]._usr = "root";
 
-          if (keys_json[i].key_r === true) {
-            if ((!to_load[keys_json[i].key_s]) && (keys_json[i].key_s !== "_s") && (keys_json[i].key_s !== "keys")) {
-              delete keys_json[i].key_r;
-              delete keys_json[i].key_s;
-              delete keys_json[i].key_key;
-            }
-          }
+
           if (keys_json[i].key_arr === true) {
             var obj = this.create_key_arr(keys_json[i]);
-            if (key_s_obj.indexOf(obj.key_n) !== -1 ) {
-              arr.push(obj);
-            }
+            arr.push(obj);
             delete keys_json[i].key_arr;
           }
           keys_json[i]._dt = new Date();
           if (!keys_json[i]._id) {
             keys_json[i]._id = random.id();
           }
-          if (key_s_obj.indexOf(keys_json[i].key_n) !== -1 ) {
-            arr.push(keys_json[i]);
-          }
-
+          arr.push(keys_json[i]);
 
       }
-      return arr;
+      this.col.insert(arr);
+      console.timeEnd("keys seeded in");
     }
 
   };

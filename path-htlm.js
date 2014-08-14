@@ -22,10 +22,9 @@
 
   function BuildH() {}
 
-  BuildH.prototype.build = function (database) {
-    this.database = database;
+  BuildH.prototype.build = function () {
     var server = new Server('127.0.0.1:27017');
-    this.col = server.db(database).getCollection("data");
+    this.col = server.db("alphaDB").getCollection("data");
     var tem_str = this.each_tem();
     this.write_file(tem_str, '../packages/bads:alpha-layout/atem.html');
     server.close();
