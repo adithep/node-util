@@ -10,15 +10,6 @@
   },
   {
     "schema": "_ctl",
-    "key": "data",
-    "value": {
-      "_s_n": "paths",
-      "path_n": "blank"
-    },
-    "log_ty": "Cannot find related value, or slave mismatched."
-  },
-  {
-    "schema": "_ctl",
     "key": "data_dis_key_arr",
     "value": {
       "_s_n": "keys",
@@ -46,6 +37,15 @@
     "value": {
       "_s_n": "templates",
       "tem_ty_n": "info_with_img"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "schema": "_ctl",
+    "key": "data",
+    "value": {
+      "_s_n": "paths",
+      "path_n": "blank"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   },

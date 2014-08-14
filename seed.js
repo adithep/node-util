@@ -51,23 +51,10 @@
   Seed.prototype.custom_sort = function () {
     var self = this;
     self.col.find({_s_n: "apps"}).forEach(function(doc){
-      if (doc.app_root) {
-        self.col.find({_s_n: "_ctl", _ctl_n: {$in: doc.app_root}}).forEach(function(ctl_obj){
-          self.col.update(
-            {_id: ctl_obj._id},
-            {$addToSet: {app_n_arr: doc.app_n}, $set: {'sort.paths.app_root': doc.app_root.indexOf(ctl_obj._ctl_n)}}
-          );
-        });
-        var data = [];
-        data[0] = {'sort.paths.app_root': {$exists: true}};
-        data[1] = {sort: {'sort.paths.app_root': 1}};
-        var ej_data = EJSON.stringify(data[0]);
-        var ej_data1 = EJSON.stringify(data[1]);
-        self.col.update(
-          {_id: doc._id},
-          {$set: {app_root: {data: ej_data, data_opt: ej_data1}}}
-        );
-      }
+      self.col.update(
+        {_id: doc._id},
+        {$addToSet: {app_n_arr: doc.app_n}}
+      );
       if (doc.paths) {
         for (var path_key in doc.paths) {
           self.sort_ctl(doc._id, path_key, doc.paths[path_key], doc.app_n);
@@ -142,7 +129,11 @@
     });
     var data = [];
     data[0] = {};
+    data[0]._s_n = "_ctl";
     data[0][str] = {$exists: true};
+    if (arr.indexOf("sub_path") === -1) {
+      data[0] = {$or: [{_ctl_n: "sub_path"}, data[0]]};
+    }
     data[1] = {sort: {}};
     data[1].sort[str] = 1;
     var ej_data = EJSON.stringify(data[0]);
@@ -151,7 +142,7 @@
     var data_obj = {};
     data_obj[data_str] = {};
     data_obj[data_str].data = ej_data;
-    data_obj[data_str].data_opt = ej_data[1];
+    data_obj[data_str].data_opt = ej_data1;
     self.col.update(
       {_id: id},
       {$set: data_obj}
