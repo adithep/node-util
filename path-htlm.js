@@ -85,7 +85,7 @@
     this.col.find({_s_n: "templates"}).forEach(function(doc){
       if (doc.tem_comp) {
         var html, htmc, tem_n, tem_c;
-        html = "{{#each t_yield}}{{>_sel_spa}}{{/each}}";
+        html = "{{#each c_yield}}{{>_sel_spa}}{{/each}}";
         tem_n = doc.tem_ty_n;
         html = self.tem_loop(doc.tem_comp, html, tem_n, {client: 'html', top: true});
         tem_str = tem_str+html;

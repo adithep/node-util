@@ -56,9 +56,15 @@
         {$addToSet: {app_n_arr: doc.app_n}}
       );
       if (doc.paths) {
+        var path_obj = {};
         for (var path_key in doc.paths) {
-          self.sort_ctl(doc._id, path_key, doc.paths[path_key], doc.app_n);
+          path_obj = self.sort_ctl(doc._id, path_key, doc.paths[path_key], doc.app_n, path_obj);
         }
+        path_obj = EJSON.stringify(path_obj);
+        self.col.update(
+          {_id: doc._id},
+          {$set: {paths: path_obj}}
+        );
       }
     });
   };
@@ -81,7 +87,7 @@
         var _ctl_str = 'sort.' + ctl_obj._s_n + '.' + ctl_obj._ctl_n;
         self.col.find(query).forEach(function(data_doc){
           if (data_doc[ctl_obj.data_sort_key]) {
-            self.tag_data(data_doc._id, _ctl_str, ctl_obj.data_sort_arr, ctl_obj.data_sort_key, app);
+            self.tag_data(data_doc._id, _ctl_str, ctl_obj.data_sort_arr, data_doc[ctl_obj.data_sort_key], app);
           }
           if (data_doc._s_n === "_ctl") {
             self._ctl_loop(data_doc, app);
@@ -115,7 +121,7 @@
     }
   };
 
-  Seed.prototype.sort_ctl = function (id, key, arr, app) {
+  Seed.prototype.sort_ctl = function (id, key, arr, app, path_obj) {
     var self = this;
     var str = 'sort.paths.' + key;
     self.col.find({_s_n: "_ctl", _ctl_n: {$in: arr}}).forEach(function(ctl_obj){
@@ -129,24 +135,16 @@
     });
     var data = [];
     data[0] = {};
-    data[0]._s_n = "_ctl";
     data[0][str] = {$exists: true};
     if (arr.indexOf("sub_path") === -1) {
-      data[0] = {$or: [{_ctl_n: "sub_path"}, data[0]]};
+      data[0] = {_s_n: "_ctl", $or: [{_ctl_n: "sub_path"}, data[0]]};
     }
     data[1] = {sort: {}};
     data[1].sort[str] = 1;
-    var ej_data = EJSON.stringify(data[0]);
-    var ej_data1 = EJSON.stringify(data[1]);
-    var data_str = 'paths.' + key;
-    var data_obj = {};
-    data_obj[data_str] = {};
-    data_obj[data_str].data = ej_data;
-    data_obj[data_str].data_opt = ej_data1;
-    self.col.update(
-      {_id: id},
-      {$set: data_obj}
-    );
+    path_obj[key] = {};
+    path_obj[key].data = data[0];
+    path_obj[key].data_opt = data[1];
+    return path_obj;
 
   };
 

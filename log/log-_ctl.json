@@ -42,10 +42,10 @@
   },
   {
     "schema": "_ctl",
-    "key": "data",
+    "key": "data_href",
     "value": {
-      "_s_n": "paths",
-      "path_n": "blank"
+      "_s_n": "keys",
+      "key_n": "/"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   },
