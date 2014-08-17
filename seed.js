@@ -55,17 +55,10 @@
         {_id: doc._id},
         {$addToSet: {app_n_arr: doc.app_n}}
       );
-      if (doc.paths) {
-        var path_obj = {};
-        for (var path_key in doc.paths) {
-          path_obj = self.sort_ctl(doc._id, path_key, doc.paths[path_key], doc.app_n, path_obj);
-        }
-        path_obj = EJSON.stringify(path_obj);
-        self.col.update(
-          {_id: doc._id},
-          {$set: {paths: path_obj}}
-        );
-      }
+      self.col.find({_s_n: "_ctl", app_n_arr: "marathon", path_n: {$exists: true}}).forEach(function(ctl_obj){
+        self._ctl_loop(ctl_obj, doc.app_n);
+      });
+
     });
   };
 
@@ -96,6 +89,9 @@
         var data = [];
         data[0] = {};
         data[0][_ctl_str] = {$exists: true};
+        if (ctl_obj.path_n && ctl_obj.data_sort_arr.indexOf("sub_path")===-1) {
+          data[0] = {_s_n: "_ctl", $or: [{_ctl_n: "sub_path"}, data[0]]};
+        }
         data[1] = {sort: {}};
         data[1].sort[_ctl_str] = 1;
         var ej_data = EJSON.stringify(data[0]);
@@ -103,7 +99,7 @@
         var data_str = ctl_obj._s_n + '.' + ctl_obj._ctl_n;
         self.col.update(
           {_id: ctl_obj._id},
-          {$set: {data: ej_data, data_opt: ej_data1}, $unset: {data_cort_arr: "", data_sort_key: ""}}
+          {$set: {data: ej_data, data_opt: ej_data1}, $unset: {data_sort_arr: "", data_sort_key: ""}}
         );
       } else {
         self.col.find(query).forEach(function(data_doc){
@@ -695,6 +691,18 @@
       this.col.insert(arr);
       console.timeEnd("keys seeded in");
     }
+
+  };
+
+  Seed.prototype.aggregate_check = function (key_obj) {
+    var self = this;
+    self.col.find({_s_n: "_s", _s_n_for: {$nin: ["_s", "keys"]}}).forEach(function (s_n) {
+      var keys = self.check_keys(s_n._s_keys, s_n._s_n_for, log);
+      var pipe = [];
+      var obj1 = {};
+
+    });
+
 
   };
 
