@@ -39,7 +39,7 @@
       this.seed_schema(s_json);
       //this.write_file(keys_obj, 'temp/keys.json');
       this.custom_sort();
-      this.check_all();
+      //this.check_all();
 
     }
 
@@ -55,8 +55,8 @@
         {_id: doc._id},
         {$addToSet: {app_n_arr: doc.app_n}}
       );
-      self.col.find({_s_n: "_ctl", app_n_arr: "marathon", path_n: {$exists: true}}).forEach(function(ctl_obj){
-        self._ctl_loop(ctl_obj, doc.app_n);
+      self.col.find({_s_n: "a_paths", app_n_arr: "marathon"}).forEach(function(path_obj){
+        self.sort_ctl(path_obj, doc.app_n);
       });
 
     });
@@ -89,9 +89,6 @@
         var data = [];
         data[0] = {};
         data[0][_ctl_str] = {$exists: true};
-        if (ctl_obj.path_n && ctl_obj.data_sort_arr.indexOf("sub_path")===-1) {
-          data[0] = {_s_n: "_ctl", $or: [{_ctl_n: "sub_path"}, data[0]]};
-        }
         data[1] = {sort: {}};
         data[1].sort[_ctl_str] = 1;
         var ej_data = EJSON.stringify(data[0]);
@@ -117,12 +114,12 @@
     }
   };
 
-  Seed.prototype.sort_ctl = function (id, key, arr, app, path_obj) {
+  Seed.prototype.sort_ctl = function (path_obj, app) {
     var self = this;
-    var str = 'sort.paths.' + key;
-    self.col.find({_s_n: "_ctl", _ctl_n: {$in: arr}}).forEach(function(ctl_obj){
+    var str = 'sort.paths.' + path_obj.path_n;
+    self.col.find({_s_n: "_ctl", _id: {$in: path_obj.data}}).forEach(function(ctl_obj){
       var obj = {};
-      obj[str] = arr.indexOf(ctl_obj._ctl_n);
+      obj[str] = path_obj.data.indexOf(ctl_obj._id);
       self.col.update(
         {_id: ctl_obj._id},
         {$addToSet: {app_n_arr: app}, $set: obj}
@@ -132,15 +129,18 @@
     var data = [];
     data[0] = {};
     data[0][str] = {$exists: true};
-    if (arr.indexOf("sub_path") === -1) {
-      data[0] = {_s_n: "_ctl", $or: [{_ctl_n: "sub_path"}, data[0]]};
+    data[1] = {sort: {}};    
+    if (path_obj.data.indexOf("6bXwygerfPAmcYNXm") === -1) {
+      data[0] = {$or: [{_id: "6bXwygerfPAmcYNXm"}, data[0]]};
+      data[1].sort["sort.sub_path"] = 1;
     }
-    data[1] = {sort: {}};
     data[1].sort[str] = 1;
-    path_obj[key] = {};
-    path_obj[key].data = data[0];
-    path_obj[key].data_opt = data[1];
-    return path_obj;
+    var ej_data = EJSON.stringify(data[0]);
+    var ej_data1 = EJSON.stringify(data[1]);
+    self.col.update(
+      {_id: path_obj._id},
+      {$set: {data: ej_data, data_opt: ej_data1}}
+    );
 
   };
 

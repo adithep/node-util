@@ -28,15 +28,6 @@
   },
   {
     "schema": "_ctl",
-    "key": "path_n",
-    "value": {
-      "_s_n": "paths",
-      "path_n": "root"
-    },
-    "log_ty": "Cannot find related value, or slave mismatched."
-  },
-  {
-    "schema": "_ctl",
     "key": "data",
     "value": {
       "_s_n": "img",
@@ -46,31 +37,6 @@
         ]
       },
       "img_ty_arr": "behind_the_scene"
-    },
-    "log_ty": "Cannot find related value, or slave mismatched."
-  },
-  {
-    "schema": "_ctl",
-    "key": "path_n",
-    "value": {
-      "_s_n": "paths",
-      "path_n": "contact_us"
-    },
-    "log_ty": "Cannot find related value, or slave mismatched."
-  },
-  {
-    "schema": "_ctl",
-    "key": "data_sort_arr",
-    "value": {
-      "undefined": "TNbya8ujcbXm3md6w"
-    },
-    "log_ty": "Cannot find related value, or slave mismatched."
-  },
-  {
-    "schema": "_ctl",
-    "key": "data_sort_arr",
-    "value": {
-      "undefined": "9eCvGEkhFNHdiT4yY"
     },
     "log_ty": "Cannot find related value, or slave mismatched."
   },

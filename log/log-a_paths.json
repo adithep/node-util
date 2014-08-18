@@ -1,0 +1,140 @@
+[
+  {
+    "schema": "a_paths",
+    "key": "path_n",
+    "value": {
+      "_s_n": "paths",
+      "path_n": "root"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "key": "data",
+    "value": "{\"sort.paths.root\":{\"$exists\":true}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.root\":1}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.about\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.about\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.experiences\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.experiences\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.img_location\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.img_location\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.img_behind_the_scene\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.img_behind_the_scene\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.img_location_restaruant\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.img_location_restaruant\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.img_location_condo\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.img_location_condo\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.img_location_office\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.img_location_office\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.img_location_mall\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.img_location_mall\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "schema": "a_paths",
+    "key": "path_n",
+    "value": {
+      "_s_n": "paths",
+      "path_n": "contact_us"
+    },
+    "log_ty": "Cannot find related value, or slave mismatched."
+  },
+  {
+    "key": "data",
+    "value": "{\"$or\":[{\"_id\":\"6bXwygerfPAmcYNXm\"},{\"sort.paths.contact_us\":{\"$exists\":true}}]}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  },
+  {
+    "key": "data_opt",
+    "value": "{\"sort\":{\"sort.paths.contact_us\":1,\"sort.sub_path\":0}}",
+    "schema": "a_paths",
+    "log_ty": "Key not in Schema"
+  }
+]
