@@ -44,15 +44,20 @@
       if (arr[i].tem_comp) {
         html = this.tem_loop(arr[i].tem_comp, html, {client: opts.client});
       }
+      cla = arr[i].class || "";
+
+      if (html === "{{_sel_doc}}") {
+        cla = cla + " " + "{{get_key}}";
+      }
+
       if (opts.top) {
         if (opts.client === "htmc") {
-          cla = arr[i].class + " " + "{{get_evt}}";
+          cla = cla + " " + "{{get_evt}}";
         } else if (opts.client === "html") {
-          cla = arr[i].class + " " + "{{get_look}}";
+          cla = cla + " " + "{{get_look}}";
         }
-      } else {
-        cla = arr[i].class;
       }
+
       if (arr[i].tag === "img") {
         th = "<" + arr[i].tag + " " + "class='" + cla +"' src='{{_sel_img}}'>";
       } else {
@@ -71,7 +76,7 @@
     }
     if (opts.top) {
       if (opts.client === "htmc") {
-        th = "{{#each k_yield}}"+th+"{{/each}}";
+        th = "<div class='d_div'>{{#each k_yield}}"+th+"{{/each}}</div>";
       }
       th = "<template name='"+tem_n+"'>"+th+"</template>";
     }
