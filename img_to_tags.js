@@ -1,12 +1,11 @@
 (function () {
   "use strict";
 
-  var walk = require('walk')
-    , fs = require('fs')
-    , options
-    , walker
-    , arr = []
-    ;
+  var walk = require('walk'),
+    fs = require('fs'),
+    options,
+    walker,
+    arr = [];
   var obj = {
     "Aetas Residence": "ELwKPCaJARdyYFkzq",
     "Sarawan Condominium": "FuvWq2sGea3bxSeQM",

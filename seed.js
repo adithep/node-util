@@ -129,7 +129,7 @@
     var data = [];
     data[0] = {};
     data[0][str] = {$exists: true};
-    data[1] = {sort: {}};    
+    data[1] = {sort: {}};
     if (path_obj.data.indexOf("6bXwygerfPAmcYNXm") === -1) {
       data[0] = {$or: [{_id: "6bXwygerfPAmcYNXm"}, data[0]]};
       data[1].sort["sort.sub_path"] = 1;
