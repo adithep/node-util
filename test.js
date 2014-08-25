@@ -29,7 +29,8 @@ var someObject = {
 var result;
 var part1name = "part1.name";
 var part2quantity = "part2.qty";
-var part3name1 = "part3[0].name";
+var part3name1 = "part3.0.name";
+var pparr = [part1name, part2quantity, part3name1];
 
 // Alnitak
 Object.byString = function(o, s) {
@@ -45,7 +46,7 @@ Object.byString = function(o, s) {
         }
     }
     return o;
-}
+};
 
 console.time('Object.byString');
 console.log(Object.byString(someObject, part1name));
@@ -87,10 +88,13 @@ function _eval(obj, path) {
 }
 
 console.time('eval');
-console.log(_eval(someObject, part1name));
-console.log(_eval(someObject, part2quantity));
-console.log(_eval(someObject, part3name1));
+for(var i = 0; i < 100; i++){
+    console.log(_eval(someObject, part1name));
+    console.log(_eval(someObject, part2quantity));
+    console.log(_eval(someObject, "part3[0].name"));
+}
 console.timeEnd('eval');
+
 
 // TheZver
 /**
@@ -125,8 +129,27 @@ Object.resolve = function(path, obj) {
     });
 };
 
+var a = [];
+
 console.time('Object.resolve');
-console.log(Object.resolve(part1name, someObject));
-console.log(Object.resolve(part2quantity, someObject));
-console.log(Object.resolve(part3name1, someObject));
+for(var i = 0; i < 100; i++){
+    console.log(Object.resolve(part1name, someObject));
+    console.log(Object.resolve(part2quantity, someObject));
+    console.log(Object.resolve(part3name1, someObject));
+}
 console.timeEnd('Object.resolve');
+
+console.time('notation');
+for(var i = 0; i < 100; i++){
+  for(var j = 0; j<pparr.length; j++) {
+    var str = pparr[j].split(".");
+    if (str.length === 1) {
+      console.log(someObject[str[0]]);
+    } else if (str.length === 2) {
+      console.log(someObject[str[0]][str[1]]);
+    } else if (str.length === 3) {
+      console.log(someObject[str[0]][str[1]][str[2]]);
+    }
+  }
+}
+console.timeEnd('notation');
