@@ -65,7 +65,11 @@
   Seed.prototype.tag_data = function (id, str, arr, key, app) {
     var self = this;
     var obj = {};
-    obj[str] = arr.indexOf(key);
+    var ind = arr.indexOf(key);
+    if (ind === -1) {
+      ind = Number.POSITIVE_INFINITY;
+    }
+    obj[str] = ind;
     self.col.update(
       {_id: id},
       {$addToSet: {app_n_arr: app}, $set: obj}
@@ -119,7 +123,11 @@
     var str = 'sort.paths.' + path_obj.path_n;
     self.col.find({_s_n: "_ctl", _id: {$in: path_obj.data}}).forEach(function(ctl_obj){
       var obj = {};
-      obj[str] = path_obj.data.indexOf(ctl_obj._id);
+      var ind = path_obj.data.indexOf(ctl_obj._id);
+      if (ind === -1) {
+        ind = Number.POSITIVE_INFINITY;
+      }
+      obj[str] = ind;
       self.col.update(
         {_id: ctl_obj._id},
         {$addToSet: {app_n_arr: app}, $set: obj}
