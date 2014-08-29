@@ -81,7 +81,7 @@
     if (ctl_obj.data) {
       var query = EJSON.parse(ctl_obj.data);
       if (ctl_obj.data_sort_key && ctl_obj.data_sort_arr) {
-        var _ctl_str = 'sort.' + ctl_obj._s_n + '.' + ctl_obj._ctl_n;
+        var _ctl_str = 'sort.' + ctl_obj._s_n + '.' + ctl_obj._id;
         self.col.find(query).forEach(function(data_doc){
           if (data_doc[ctl_obj.data_sort_key]) {
             self.tag_data(data_doc._id, _ctl_str, ctl_obj.data_sort_arr, data_doc[ctl_obj.data_sort_key], app);
@@ -97,7 +97,7 @@
         data[1].sort[_ctl_str] = 1;
         var ej_data = EJSON.stringify(data[0]);
         var ej_data1 = EJSON.stringify(data[1]);
-        var data_str = ctl_obj._s_n + '.' + ctl_obj._ctl_n;
+        var data_str = ctl_obj._s_n + '.' + ctl_obj._id;
         self.col.update(
           {_id: ctl_obj._id},
           {$set: {data: ej_data, data_opt: ej_data1}, $unset: {data_sort_arr: "", data_sort_key: ""}}
