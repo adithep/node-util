@@ -138,6 +138,11 @@
     data[0] = {};
     data[0][str] = {$exists: true};
     data[1] = {sort: {}};
+    if (path_obj.dropdown) {
+      if (path_obj.dropdown === "data") {
+        data[2] = EJSON.clone(data[0]);
+      }
+    }
     if (path_obj.data.indexOf("6bXwygerfPAmcYNXm") === -1) {
       data[0] = {$or: [{_id: "6bXwygerfPAmcYNXm"}, data[0]]};
       data[1].sort["sort.sub_path"] = 1;
@@ -145,10 +150,19 @@
     data[1].sort[str] = 1;
     var ej_data = EJSON.stringify(data[0]);
     var ej_data1 = EJSON.stringify(data[1]);
-    self.col.update(
-      {_id: path_obj._id},
-      {$set: {data: ej_data, data_opt: ej_data1}}
-    );
+    if (data[2]) {
+      var ej_data2 = EJSON.stringify(data[2]);
+      self.col.update(
+        {_id: path_obj._id},
+        {$set: {data: ej_data, data_opt: ej_data1, dropdown: ej_data2, dropdown_opt: ej_data1}}
+      );
+    } else {
+      self.col.update(
+        {_id: path_obj._id},
+        {$set: {data: ej_data, data_opt: ej_data1}}
+      );
+    }
+
 
   };
 
