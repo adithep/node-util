@@ -575,8 +575,15 @@
   };
 
   Seed.prototype.create_obj = function (obj, s_n) {
-    obj._usr = "root";
-    obj._dt = new Date();
+    if (!obj._usr) {
+      obj._usr = "root";
+    }
+    if (!obj._dt) {
+      obj._dt = new Date();
+    }
+    if (!obj._app) {
+      obj._app = "seed.js";
+    }
     if (!obj._id) {
       obj._id = random.id();
     }
